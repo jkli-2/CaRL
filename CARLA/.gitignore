@@ -1,0 +1,160 @@
+# macOS files
+*.DS_store
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+#   However, in case of collaboration, if having platform-specific dependencies or dependencies
+#   having no cross-platform support, pipenv may install dependencies that don't work, or not
+#   install all needed dependencies.
+#Pipfile.lock
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# Custom
+1_carla/evaluation/
+carla_0_9_10
+1_carla/team_code_latest/model_ckpt
+/.idea
+1_carla/results
+2_carla/results
+1_carla/Experimental_Results
+1_carla/team_code_latest/GPS_measurements
+/team_code_latest/BB_Measurements
+/team_code_latest/new_sensors/tmp_cache
+/tools/proxy_simulator/map_data
+*.t7
+2_carla/evaluation
+/2_carla/team_code_roach/birds_eye_view/maps_5ppm_cv/Town11.h5
+/2_carla/custom_leaderboard/leaderboard/data/debug_routes_with_scenarios/
+/2_carla/custom_leaderboard/leaderboard/data/preprocessed_routes_with_old_scenarios/
+/2_carla/custom_leaderboard/leaderboard/data/roach_preprocessed_routes4/
+/2_carla/custom_leaderboard/leaderboard/data/roach_preprocessed_routes5/
+/2_carla/custom_leaderboard/leaderboard/data/roach_preprocessed_routes6/
+diffusion/image/dataset
+
+/2_carla/team_code_roach/envpool_0_8_4/envpool-0.8.4-cp38-cp38-linux_x86_64.whl
+/2_carla/custom_leaderboard/leaderboard/data/preprocessed_with_all_scenarios_00/
+/2_carla/custom_leaderboard/leaderboard/data/preprocessed_with_all_scenarios_01/
+/2_carla/custom_leaderboard/leaderboard/data/200_meter_old_scenarios/
+/2_carla/custom_leaderboard/leaderboard/data/1000_meters_old_scenarios_01/
