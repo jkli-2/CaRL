@@ -108,7 +108,7 @@ class EvalAgent(autonomous_agent.AutonomousAgent):
                                    shape=(self.config.action_space_dim,),
                                    dtype=np.float32)
     for file in os.listdir(path_to_conf_file):
-      if file.endswith('.pth'):
+      if file.startswith('model') and file.endswith('.pth'):
         self.model_count += 1
         if not self.cpp:
           print(os.path.join(path_to_conf_file, file))
