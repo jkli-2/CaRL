@@ -1,4 +1,30 @@
-# CaRL
+# CaRL - CARLA
+
+
+
+## Contents
+
+1. [Setup](#setup)
+2. [Pre-Trained Models](#pre-trained-models)
+3. [Local Evaluation and Debugging](#local-evaluation-and-debugging)
+4. [Benchmarking](#benchmarking)
+5. [Dataset](#dataset)
+6. [Data Generation](#data-generation)
+7. [Training](#training)
+8. [Additional Documentation](#additional-documentation)
+9. [Citations](#citations)
+
+## Setup
+
+Clone the repo, setup CARLA 0.9.15, and build the conda environment:
+```Shell
+git clone https://github.com/autonomousvision/CaRL.git
+cd CaRL
+chmod +x setup_carla.sh
+./setup_carla.sh
+conda env create -f environment.yml
+conda activate carl
+```
 
 eval model:
 
