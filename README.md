@@ -1,15 +1,13 @@
-<p align="center" style="font-size:40px;">
+<h2 align="center">
 <b> CaRL: Learning Scalable Planning Policies with Simple Rewards </b>
-</p>
+</h2>
 
 <h3 align="center">
          <a href="https://arxiv.org/abs/2504.17838"> Paper</a>
 </h3>
 
-<p align="center" style="font-size:20px;">
-This repository contains the first public codebase for doing Reinforcement Learning with the CARLA leaderboard 2.0 and nuPlan. We provide pre-trained model weights for CaRL which is the best open-source RL planner on longest6 v2 and nuPlan. Additionally, we provide reproductions of the popular CARLA planners Roach, PlanT and Think2Drive for the CARLA leaderboard 2.0. <br/><br/>
-</p>
 
+This repository contains the first public codebase for doing Reinforcement Learning with the CARLA leaderboard 2.0 and nuPlan. We provide pre-trained model weights for CaRL which is the best open-source RL planner on longest6 v2 and nuPlan. Additionally, we provide reproductions of the popular CARLA planners Roach, PlanT and Think2Drive for the CARLA leaderboard 2.0.
 The code and documentation for the respective simulators can be found in the [CARLA folder](CARLA) and the [nuPlan_folder](nuPlan).
 
 
