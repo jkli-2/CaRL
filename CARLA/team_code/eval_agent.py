@@ -70,7 +70,7 @@ class EvalAgent(autonomous_agent.AutonomousAgent):
     # Environment variables
     self.save_path = os.environ.get('SAVE_PATH', None)
     self.config.debug = int(os.environ.get('DEBUG_ENV_AGENT', 0)) == 1
-    self.sample_type = os.environ.get('SAMPLE_TYPE', 'roach')  # Options: roach, mean, sample
+    self.sample_type = os.environ.get('SAMPLE_TYPE', 'mean')  # Options: roach, mean, sample
     self.record_infractions = int(os.environ.get('RECORD', 0)) == 1
     self.cpp = int(os.environ.get('CPP', 0)) == 1  # Whether to evaluate a model trained with c++
     self.port = int(os.environ.get('CPP_PORT', 5555))  # Port over which to do communication
