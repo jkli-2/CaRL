@@ -40,5 +40,7 @@ Particularly, we would like to thank the following repositories for their contri
 * [plant](https://github.com/autonomousvision/plant)
 * [roach](https://github.com/zhejz/carla-roach/)
 * [tuplan_garage](https://github.com/autonomousvision/tuplan_garage)
+* [clean_rl](https://github.com/vwxyzjn/cleanrl/tree/master)
+* [torchfort](https://github.com/NVIDIA/TorchFort)
 
 We also thank the creators of the numerous libraries we use. Complex projects like this would not be feasible without your contribution.

@@ -17,8 +17,8 @@ In general, we recommend reading the Appendix of the paper if you want to use th
 2. [Pre-Trained Models](#pre-trained-models)
 3. [Local Debugging](#local-debugging)
 4. [Benchmarking](#benchmarking)
-6. [Training](#training)
-7. [C++ code](#CPP-Training-and-Evaluation-Code)
+5. [Training](#training)
+6. [C++ code](#CPP-Training-and-Evaluation-Code)
 
 
 ## Setup
@@ -123,7 +123,26 @@ To aggregate the results of a parallel evaluation into a single csv we provide t
 python ${WORK_DIR}/tools/result_parser.py --results /path/to/folder/containing_json_files --xml ${WORK_DIR}/custom_leaderboard/leaderboard/data/longest6.xml
 ```
 
+## Training
 
+The main training algorithm is in [dd_ppo.py](team_code/dd_ppo.py). It contains a custom [DD_PPO](https://arxiv.org/abs/1911.00357) implementation that is based on the PPO code in [CleanRL](https://github.com/vwxyzjn/cleanrl/tree/master).
+We are using a RL optimized leaderboard in this project but the unmodified CARLA 0.9.15 server.
+The CARLA server has various problems for RL training such as that it occasionally crashes due to bugs.
+For that reason we use the [train_parallel.py](team_code/train_parallel.py) script to start the training, which starts up the CARLA servers, leaderboard clients and training code. The script monitors the training for CARLA crashes and restarts everything if something crashes. Crashes happen typically a couple of times per run on small scale (10M samples, 8 concurrent servers), but constantly (~every 15 min) at large (300 M samples, 128 concurrent servers) runs.
+Additionally, for larger runs we also observed CARLA race conditions on shared cluster file systems. 
+The most consistent way for us to get the 300M training run to converge was use a VM/independent node with 128 CPU cores and 8 GPUs and 1TB of RAM (training uses quite a lot of RAM to avoid loading routes from disk during training).
+A more principled solution would be to fork the simulator and fix the CARLA bugs. We might do this in the future and update here.
+
+We provide 4 training configs to train different RL models.
+The training code is highly configurable, you can find the right hyperparameters for each model in these scripts.
+
+* [train_roach.sh](team_code/train_roach.sh) Reproduces the Roach approach for the CARLA leaderboard 2.0.
+* [train_carl_tiny_cpp.sh](team_code/train_carl_tiny_cpp.sh) Reproduces the 10M samples ablation in Table 4. Can be a good start to play around with the repo since it only needs 1 GPU and trains within a day. The script uses the C++ training code described later.
+* [train_carl_py.sh](team_code/train_carl_py.sh) Trains the CaRL method (300M samples run) using the python training code.
+* [train_carl_cpp.sh](team_code/train_carl_cpp.sh) Trains the CaRL method (300M samples run) using the C++ training code.
+
+
+## CPP Training and Evaluation Code
 
 
 ## Viewing training logs
@@ -131,7 +150,7 @@ Start tensorboard with tensorboard --logdir /home/jaeger/ordnung/internal/CaRL/C
 
 
 
-## CPP Training and Evaluation Code
+
 
 
 
