@@ -27,7 +27,7 @@ export MASTER_ADDR=${rdzv_addr}
 
 SCRATCH="${SCRATCH:=/tmp}"
 
-a="mpirun --oversubscribe -n ${num_processes} --bind-to none ${ppo_cpp_install_path}/gs_ppo_carla --rdzv_addr ${rdzv_addr} --logdir ${logdir}"
+a="mpirun --oversubscribe -n ${num_processes} --bind-to none ${ppo_cpp_install_path}/ac_ppo_carla --rdzv_addr ${rdzv_addr} --logdir ${logdir}"
 b="${@:12}"
 c="${a} ${b}"
 

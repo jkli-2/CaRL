@@ -31,7 +31,7 @@ To cite the paper please use the following bibtex:
 ## Acknowledgements
 The original code in this repository was written by Bernhard Jaeger, Daniel Dauner, Jens Beißwenger and Simon Gerstenecker. Kashyap Chitta and Andreas Geiger  have contributed as technical advisors.
 
-Open source code like this is build on the shoulders of many other open source repositories.
+Code like this is build on the shoulders of many other open source repositories.
 Particularly, we would like to thank the following repositories for their contributions:
 
 * [leaderboard](https://github.com/carla-simulator/leaderboard)
@@ -41,6 +41,5 @@ Particularly, we would like to thank the following repositories for their contri
 * [roach](https://github.com/zhejz/carla-roach/)
 * [tuplan_garage](https://github.com/autonomousvision/tuplan_garage)
 * [clean_rl](https://github.com/vwxyzjn/cleanrl/tree/master)
-* [torchfort](https://github.com/NVIDIA/TorchFort)
 
 We also thank the creators of the numerous libraries we use. Complex projects like this would not be feasible without your contribution.

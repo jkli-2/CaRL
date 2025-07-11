@@ -343,7 +343,7 @@ if __name__ == '__main__':
         unknown_str = ' '.join(str(x) for x in unknown)
         #   --num_envs_per_proc {num_envs_per_proc} {cmdline}
         train_process = subprocess.Popen(  # pylint: disable=locally-disabled, consider-using-with
-            f'bash start_learner_gs_ppo.sh {git_root} {num_processes} {args.num_nodes} {args.rdzv_addr} '
+            f'bash start_learner_ac_ppo.sh {git_root} {num_processes} {args.num_nodes} {args.rdzv_addr} '
             f'{args.rdzv_port} {args.PYTORCH_KERNEL_CACHE_PATH} {args.ppo_cpp_install_path} {raw_logdir} '
             f'{args.cpp_singularity_file_path} {args.cpp_system_lib_path_1} {args.cpp_system_lib_path_2} '
             f'{cpp_str_ports} --load_file {load_file} --num_envs {num_envs} --exp_name {args.exp_name} '
