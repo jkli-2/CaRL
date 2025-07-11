@@ -13,9 +13,9 @@
 echo "START TIME: $(date)"
 start=`date +%s`
 
-for i in $(seq 4 4); do
-  ex_name=$(printf "AC_PPO_025_%02d" ${i})
-  python -u evaluate_routes_slurm.py --experiment "${ex_name}" --benchmark longest6_no_scenarios --team_code team_code_roach --epochs model_final --num_repetitions 3 --use_cpp 1 --sample_type mean --high_freq_inference 0 --record 1 &
+for i in $(seq 0 1); do
+  ex_name=$(printf "CaRL_PY_%02d" ${i})
+  python -u evaluate_routes_slurm.py --experiment "${ex_name}" --benchmark longest6 --team_code team_code --epochs model_final --num_repetitions 3 --use_cpp 0 --sample_type mean --high_freq_inference 0 --record 1 &
 done
 wait
 

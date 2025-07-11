@@ -17,7 +17,6 @@ In general, we recommend reading the Appendix of the paper if you want to use th
 2. [Pre-Trained Models](#pre-trained-models)
 3. [Local Debugging](#local-debugging)
 4. [Benchmarking](#benchmarking)
-5. [Dataset](#dataset)
 6. [Training](#training)
 7. [C++ code](#CPP-Training-and-Evaluation-Code)
 
@@ -108,7 +107,27 @@ The training script is highly configurable with many parameters. You can find th
 torch.distributed.run --nnodes=1 --nproc_per_node=1 --max_restarts=0 --rdzv-backend=c10d --rdzv-endpoint=localhost:0 ${WORK_DIR}/team_code/dd_ppo.py --num_envs_per_gpu 1 --use_dd_ppo_preempt False --exp_name DD_PPO_debug --tcp_store_port 7000 --logdir ${WORK_DIR}/results/ --total_batch_size 512 --total_minibatch_size 128 --update_epochs 3 --total_timesteps 10000000 --reward_type simple_reward --debug 1 --debug_type save --ports 5555
 ```
 
+## Benchmarking
 
+CaRL is currently trained with the 6 scenarios for the longest6 v2 benchmark.
+To evaluate CaRL efficiently we parallelize evaluation with multiple GPUs using the [evaluate_routes_slurm.py](evaluate_routes_slurm.py) script. It is build for a SLURM cluster with many cheap consumer GPUs and started using the [run_evaluation_slurm.sh](run_evaluation_slurm.sh). If your cluster has a different structure or job scheduler you can use this script to write your own. In particular for clusters with few expensive GPUs it can be beneficial to evaluate multiple models per GPU at the same time instead.
+Since CARLA can be run in CPU mode and CaRL is quite a fast model, longest6 v2 evaluates much faster than is typical with sensorimotor agents.
+
+### Longest6 v2
+Longest6 is a benchmark consisting of 36 medium length routes (~1-2 km) from leaderboard 1.0 in towns 1-6. We have adapted the benchmark to the new CARLA version 0.9.15 and leaderboard/scenario runner code. The benchmark features the 7 scenario types from leaderboard 1.0 (now 6 scenarios implemented with the leaderboard 2.0 logic). The scenario descriptions were created by converting the leaderboard 1.0 scenarios with the CARLA route bridge converter. It can serve as a benchmark with intermediate difficulty. Note that the results of models on Longest6 v2 are not directly comparable to the leaderboard 1.0 longest6 numbers. The benchmark can be found [here](custom_leaderboard/leaderboard/data/longest6.xml) and the individual route files [here](custom_leaderboard/leaderboard/data/longest6_split). Unlike the leaderboard 1.0 version, there are no modifications to the CARLA leaderboard code. Longest6 is a training benchmark, so training on Town 01-06 is allowed.
+
+### Result aggregation
+To aggregate the results of a parallel evaluation into a single csv we provide the [result_parser.py](tools/result_parser.py) script.
+
+```Shell
+python ${WORK_DIR}/tools/result_parser.py --results /path/to/folder/containing_json_files --xml ${WORK_DIR}/custom_leaderboard/leaderboard/data/longest6.xml
+```
+
+
+
+
+## Viewing training logs
+Start tensorboard with tensorboard --logdir /home/jaeger/ordnung/internal/CaRL/CARLA/results --load_fast=false
 
 
 
