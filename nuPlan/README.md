@@ -1,14 +1,14 @@
 
-# Results 🏆
+# 1. Results 🏆
 
-### Performance with non-reactive traffic on Val14 (nuPlan)
+## 1.1 Performance with non-reactive traffic on `Val14` 
 
-### Performance with reactive traffic on Val14 (nuPlan)
+## 1.2 Performance with reactive traffic on `Val14` 
 
 
-# Install 📦
+# 2. Install 📦
 
-### Code 📄
+# 2.1 Code 📄
 First, you need to download the [`nuplan-devkit`](https://github.com/motional/nuplan-devkit), create the `nuplan` conda environment, and install the devkit as editable pip package. For instructions, please follow the [nuPlan documentation](https://nuplan-devkit.readthedocs.io/en/latest/installation.html) (Option B).
 
 Next, navigate into the `nuplan` folder of the CaRL repository and install the code in the nuplan conda environment (also as editable pip package), with the following commands:
@@ -20,7 +20,7 @@ pip install -e .
 > [!NOTE]  
 > We use torch version `2.6.0+cu124` (instead the nuPlan default `1.9.0+cu111`) in CaRL. Moreover, we install `gymnasium` and further requirements with this command.
 
-### Dataset 🗃️
+## 2.2 Dataset 🗃️
 > [!IMPORTANT]  
 > Before downloading any data, please ensure you have read the [nuPlan license](https://motional-nuplan.s3-ap-northeast-1.amazonaws.com/LICENSE).
 
@@ -58,7 +58,7 @@ nuplan
 Optionally, if you want to store the complete training dataset, you can download a pre-processed cache we used to train CaRL (see [`/scripts/download/download_cache.sh`](https://github.com/autonomousvision/CaRL/nuPlan/scripts/download/download_nuplan.sh)). The maps are still required for training/evaluation. For evaluation on `val14`, you only need to download the `val` logs. 
 
 
-### Environment Variables 🌍
+## 2.3 Environment Variables 🌍
 
 Finally, you need to add the following environment variables to your bash scripts or to your `~/.bashrc`:
 ```bash
@@ -71,11 +71,11 @@ export CARL_DEVKIT_ROOT="/path/to/CaRL/nuPlan/"
 ```
 
 
-# Training 🏋️
+# 3. Training 🏋️
 We provide training script in `/scripts/training`.
 
 
-# Evaluation 🚗
+# 4. Evaluation 🚗
 We evaluate the trained policy with the `PPOPlanner` or `PPOEnsemblePlanner`. See `/scripts/simulation` for more information. All checkpoints are provided in the GitHub repository under `/checkpoints`. For example, our best policy can be evaluated with:
 ```bash
 SPLIT=val14_split
@@ -97,3 +97,4 @@ done
 ```
 Note that this scripts evaluated the reactive and non-reactive simulation of `val14`. You can find the final results in the experiment folder stored in `"$NUPLAN_EXP_ROOT/$CHECKPOINT_NAME"`.
 
+# 4. Visualization 🎨
