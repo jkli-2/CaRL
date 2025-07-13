@@ -1,0 +1,3 @@
+# @package _global_
+experiment_name: "gym_train"
+py_func: train

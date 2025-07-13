@@ -1,0 +1,5 @@
+action_augmentation:
+  _target_: carl_nuplan.planning.training.data_augmentation.action_augmentation.ActionAugmentor
+  _convert_: 'all'
+
+  config: ${model.config}

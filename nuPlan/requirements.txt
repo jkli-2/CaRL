@@ -1,0 +1,15 @@
+nuplan-devkit==1.2.2
+scikit-learn==1.2.2
+positional-encodings==6.0.1
+schedulefree
+
+
+gym==0.17.2
+gymnasium==0.26.3
+torch==2.6.0
+
+
+wandb
+jsonpickle
+tensorboardX
+pytictoc
