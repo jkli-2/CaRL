@@ -1,6 +1,6 @@
 SPLIT=val14_split
 CHECKPOINT="$CARL_DEVKIT_ROOT/checkpoints"
-CHECKPOINT_NAME=simple_vm_500M  # nuplan_51479_1B, nuplan_51892_1B, simple_52971_500M, simple_52972_500M, simple_vm_500M
+CHECKPOINT_NAME=nuplan_51892_1B  # nuplan_51479_1B, nuplan_51892_1B, simple_52971_500M, simple_52972_500M, simple_vm_500M
 
 for CHALLENGE in closed_loop_nonreactive_agents_action closed_loop_reactive_agents_action; do
     python $NUPLAN_DEVKIT_ROOT/nuplan/planning/script/run_simulation.py \

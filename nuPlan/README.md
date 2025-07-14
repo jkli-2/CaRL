@@ -125,11 +125,12 @@ We evaluate the trained policy with the `PPOPlanner` or `PPOEnsemblePlanner`. Se
 ```bash
 SPLIT=val14_split
 CHECKPOINT="$CARL_DEVKIT_ROOT/checkpoints"
-CHECKPOINT_NAME=nuplan_51892_1B
+CHECKPOINT_NAME=nuplan_51892_1B  # nuplan_51479_1B, nuplan_51892_1B, simple_52971_500M, simple_52972_500M, simple_vm_500M
 
 for CHALLENGE in closed_loop_nonreactive_agents_action closed_loop_reactive_agents_action; do
     python $NUPLAN_DEVKIT_ROOT/nuplan/planning/script/run_simulation.py \
     +simulation=$CHALLENGE \
+    scenario_builder.data_root="$NUPLAN_DATA_ROOT/nuplan-v1.1/splits/trainval" \
     planner=ppo_planner \
     planner.ppo_planner.checkpoint_path="$CHECKPOINT/$CHECKPOINT_NAME/model_best.pth" \
     scenario_filter=$SPLIT \
