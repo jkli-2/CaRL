@@ -149,6 +149,10 @@ The nice thing about this config system is that one can easily add features whil
 For that I set the default value in the default config such that the new feature is turned off by default.
 If an old model is then run with the new code the default value of the parameter is then loaded because the parameter is not in config.json, ensuring that the new feature is turned off and the old model still runs as intended.
 
+### Viewing training logs
+The training logs are stored as tensorboard file for both the C++ and Python code. They can be viewed locally by starting tensorboard with `tensorboard --logdir /path/to/model/dir --load_fast=false`.
+The python code additionally implements uploading the log files to [Weights and Biases](https://wandb.ai/) by setting the `--track 1` option.
+
 ## CPP Training and Evaluation Code
 The training evaluation code for the C++ implementation of CaRL is hosted in the [ppo.cpp](https://github.com/autonomousvision/ppo.cpp) repository.
 To use it clone the repository and follow the instructions to build the singularity container and compile the binaries.
@@ -183,8 +187,7 @@ Lastly, PPO has a few hyperparameters that are dependent on each other. For exam
 This has no effect on the algorithm, but you need to familiarize yourself with the parameters and set them correctly.
 You can compare [train_carl_py.sh](team_code/train_carl_py.sh) with [train_carl_cpp.sh](team_code/train_carl_cpp.sh) to have an example.
 
-## Viewing training logs
-Start tensorboard with tensorboard --logdir /home/jaeger/ordnung/internal/CaRL/CARLA/results --load_fast=false
+
 
 
 
