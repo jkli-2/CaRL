@@ -6,7 +6,7 @@ import setuptools
 script_folder = os.path.dirname(os.path.realpath(__file__))
 os.chdir(script_folder)
 
-with open("requirements.txt") as f:
+with open("requirements_carl.txt") as f:
     requirements = f.read().splitlines()
 
 # Installs
@@ -25,6 +25,6 @@ setuptools.setup(
         "Operating System :: OS Independent",
         "License :: Free for non-commercial use",
     ],
-    license="apache-2.0",
+    license="Civil-M License",
     install_requires=requirements,
 )

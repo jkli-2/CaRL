@@ -8,25 +8,14 @@
 
 # 2. Install 📦
 
-# 2.1 Code 📄
-First, you need to download the [`nuplan-devkit`](https://github.com/motional/nuplan-devkit), create the `nuplan` conda environment, and install the devkit as editable pip package. For instructions, please follow the [nuPlan documentation](https://nuplan-devkit.readthedocs.io/en/latest/installation.html) (Option B).
-
-Next, navigate into the `nuplan` folder of the CaRL repository and install the code in the nuplan conda environment (also as editable pip package), with the following commands:
-```bash
-cd /path/to/carl-repo/nuplan
-conda activate nuplan
-pip install -e .
-```
-> [!NOTE]  
-> We use torch version `2.6.0+cu124` (instead the nuPlan default `1.9.0+cu111`) in CaRL. Moreover, we install `gymnasium` and further requirements with this command.
-
-## 2.2 Dataset 🗃️
+## 2.1 Dataset 🗃️
 > [!IMPORTANT]  
 > Before downloading any data, please ensure you have read the [nuPlan license](https://motional-nuplan.s3-ap-northeast-1.amazonaws.com/LICENSE).
 
-In order to train and evaluate CaRL on nuPlan, you need to download the nuPlan dataset according to the [official documentation](https://nuplan-devkit.readthedocs.io/en/latest/dataset_setup.html). You can find a bash script for downloading nuPlan in [`/scripts/download/download_nuplan.sh`](https://github.com/autonomousvision/CaRL/nuPlan/scripts/download/download_nuplan.sh) (~2TB). The data needs to be stored in the following format:
+In order to train and evaluate CaRL on nuPlan, you need to download the nuPlan dataset according to the [official documentation](https://nuplan-devkit.readthedocs.io/en/latest/dataset_setup.html). You can find a bash script for downloading nuPlan in [`/scripts/download/download_nuplan.sh`](https://github.com/autonomousvision/CaRL/nuPlan/scripts/download/download_nuplan.sh) (~2TB). The data needs to be arranged in the following format:
 ```
 nuplan
+├── exp
 └── dataset
     ├── maps
     │   ├── nuplan-maps-v1.0.json
@@ -57,19 +46,53 @@ nuplan
 
 Optionally, if you want to store the complete training dataset, you can download a pre-processed cache we used to train CaRL (see [`/scripts/download/download_cache.sh`](https://github.com/autonomousvision/CaRL/nuPlan/scripts/download/download_nuplan.sh)). The maps are still required for training/evaluation. For evaluation on `val14`, you only need to download the `val` logs. 
 
+## 2.2 Code 📄
 
-## 2.3 Environment Variables 🌍
+### 2.2.1 Download ⬇️
+First, you need to download the [`nuplan-devkit`](https://github.com/motional/nuplan-devkit) and [`CaRL`](https://github.com/autonomousvision/CaRL) repository. For example, to install the repositories in the following structure 
+```
+~/carl_workspace
+├── CaRL
+└── nuplan-devkit
+```
+you can run:
+```bash 
+mkdir $HOME/carl_workspace
+cd $HOME/carl_workspace
+git clone git@github.com:autonomousvision/CaRL.git
+git git@github.com:motional/nuplan-devkit.git
+```
 
-Finally, you need to add the following environment variables to your bash scripts or to your `~/.bashrc`:
+### 2.2.2 Environment Variables 🌍
+Next, you need to set the following environment variables to your `~/.bashrc` (or before each bash script):
 ```bash
 export NUPLAN_DATA_ROOT="/path/to/nuplan/dataset"
 export NUPLAN_MAPS_ROOT="/path/to/nuplan/dataset/maps"
-export NUPLAN_EXP_ROOT="/path/to/nuplan/exp"
-export NUPLAN_DEVKIT_ROOT="/path/to/nuplan-devkit/"
 
-export CARL_DEVKIT_ROOT="/path/to/CaRL/nuPlan/"
+export NUPLAN_EXP_ROOT="$HOME/carl_workspace/exp"
+export NUPLAN_DEVKIT_ROOT="$HOME/carl_workspace/nuplan-devkit"
+export CARL_DEVKIT_ROOT="$HOME/carl_workspace/CaRL"
 ```
 
+### 2.2.3 Conda environment 🐍
+We use a conda environment to run the CaRL code. The installation consist of (1) creating a conda environment named `carl_nuplan` from the `environment.yml`, (2) installing the `nuplan-devkit` repository as editable pip package, and (3) installing the `CaRL` repository as editable pip package. Following the structure from above, you can run:
+```bash
+echo "1. Install conda environment"
+source ~/.bashrc 
+cd $CARL_DEVKIT_ROOT
+conda env create --name carl_nuplan -f environment.yml
+
+echo "2. Install nuplan-devkit"
+conda activate carl_nuplan
+cd $NUPLAN_DEVKIT_ROOT
+pip install -e .
+
+echo "3. Install nuplan-devkit"
+cd $CARL_DEVKIT_ROOT
+pip install -e .
+```
+> [!NOTE]  
+> We use torch version `2.6.0` (instead the nuPlan default `1.9.0`) in CaRL. Moreover, we install `gymnasium` and further requirements on top of the nuplan requirements.
 
 # 3. Training 🏋️
 We provide training script in `/scripts/training`.
