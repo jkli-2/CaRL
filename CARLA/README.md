@@ -111,7 +111,7 @@ torch.distributed.run --nnodes=1 --nproc_per_node=1 --max_restarts=0 --rdzv-back
 ## Benchmarking
 
 CaRL is currently trained with the 6 scenarios for the longest6 v2 benchmark.
-To evaluate CaRL efficiently, we parallelize evaluation with multiple GPUs using the [evaluate_routes_slurm.py](evaluate_routes_slurm.py) script. It is built for a SLURM cluster with many cheap consumer GPUs and started using the [run_evaluation_slurm.sh](run_evaluation_slurm.sh). If your cluster has a different structure or job scheduler, you can use this script to write your own. In particular, for clusters with few expensive GPUs, it can be beneficial to evaluate multiple models per GPU at the same time instead.
+To evaluate CaRL efficiently, we parallelize evaluation with multiple GPUs using the [evaluate_routes_slurm.py](evaluate_routes_slurm.py) script. To use it you need to change the various paths in the command line. It is built for a SLURM cluster with many cheap consumer GPUs and started using the [run_evaluation_slurm.sh](run_evaluation_slurm.sh). If your cluster has a different structure or job scheduler, you can use this script to write your own. In particular, for clusters with few expensive GPUs, it can be beneficial to evaluate multiple models per GPU at the same time instead.
 Since CARLA can be run in CPU mode and CaRL is quite a fast model, longest6 v2 evaluates much faster than is typical with sensorimotor agents.
 
 ### Longest6 v2
