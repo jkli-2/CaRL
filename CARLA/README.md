@@ -189,10 +189,13 @@ You can compare [train_carl_py.sh](team_code/train_carl_py.sh) with [train_carl_
 The C++ code is only compatible with the CARLA environment for now.
 
 ## Scenario generation
-
-
-
-
-
+To train an RL algorithm, you need to generate many training scenarios. 
+CARLA does not provide them, so we try to automatically generate them using the [generate_long_routes_with_scenarios.py](tools/generate_long_routes_with_scenarios.py) script, described in the Appendix.
+I usually run it via [SLURM arrays](https://slurm.schedmd.com/job_array.html), see [here](0_generate_routes_with_old_scenarios.sh).
+The script generates random routes and scenarios in them, each environment that you train with gets its own file which are each specialized to a particular town to avoid reloading.
+The particular routes we used can be found [here](custom_leaderboard/leaderboard/data/1000_meters_old_scenarios_01).
+We have tested and used the 6 scenarios of the longest6 benchmark with the scenario generation script.
+The other scenarios of the CARLA leaderboard 2.0 are also implemented but not well tested. There might be many bugs (the generated scenarios are very noisy in general).
+Additionally, we were not able to generate the 6 scenarios that involve highway entries and exits because the highway entries and exits are not labelled in CARLA's HD-Map, so we can't automatically find them.
 
 
