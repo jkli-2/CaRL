@@ -1,0 +1,21 @@
+# python
+*.pyc
+**/__pycache__/
+.pytest_cache/*
+.pydevproject
+
+# IDE
+.vscode/*
+
+# Pip
+*.egg-info
+
+# Slurm
+*.err
+*.out
+
+# pictures
+*.gif
+
+# cache
+*.gz
