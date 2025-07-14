@@ -16,3 +16,6 @@
 
 # pictures
 *.gif
+
+# cache
+*.gz

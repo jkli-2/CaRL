@@ -2,9 +2,28 @@
 # 1. Results 🏆
 
 ## 1.1 Performance with non-reactive traffic on `Val14` 
+![Checkpoint Qualitative Results](checkpoints/val14_non_reactive.png)
+
 
 ## 1.2 Performance with reactive traffic on `Val14` 
+![Checkpoint Qualitative Results](checkpoints/val14_reactive.png)
 
+<details>
+<summary>Metrics</summary>
+<br>
+<ul>
+    <li>Coll: No at-fault collision</li>
+    <li>Driv.: Drivable Area Compliance</li>
+    <li>Dir.: Driving Direction Compliance</li>
+    <li>MP: Making progress</li>
+    <li>TTC: Time to Collision (TTC) within bound</li>
+    <li>RC: Route completion aka. Ego progress along the expert’s route ratio</li>
+    <li>Speed.: Speed limit compliance</li>
+    <li>Comf.: Comfort</li>
+</ul>
+For details visit the <a href="https://nuplan-devkit.readthedocs.io/en/latest/metrics_description.html">nuPlan documentation</a>. 
+*denotes without post-processing. 
+</details>
 
 # 2. Install 📦
 
@@ -123,9 +142,9 @@ done
 ```
 Note that this scripts evaluated the reactive and non-reactive simulation of `Val14`. You can find the final results in the experiment folder stored in `"$NUPLAN_EXP_ROOT/$CHECKPOINT_NAME"`.
 
-# 4. Visualization 🎨
+# 5. Visualization 🎨
 You can visualize the simulations with the nuBoard from the [`nuplan-devkit`](https://github.com/motional/nuplan-devkit). For that, you can run:
-```
+```bash
 conda activate carl_nuplan
 python $NUPLAN_DEVKIT_ROOT/nuplan/planning/script/run_nuboard.py
 ```
