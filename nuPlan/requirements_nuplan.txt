@@ -17,8 +17,8 @@ hypothesis
 joblib
 jupyter
 jupyterlab
-matplotlib
-mockpip
+matplotlib==3.9.2
+mock
 moto
 nest_asyncio
 numpy==1.23.4

@@ -44,7 +44,7 @@ nuplan
          └── sensor_blobs (empty)
 ```
 
-Optionally, if you want to store the complete training dataset, you can download a pre-processed cache we used to train CaRL (see [`/scripts/download/download_cache.sh`](https://github.com/autonomousvision/CaRL/blob/main/nuPlan/scripts/download/download_cache.sh)). The maps are still required for training/evaluation. For evaluation on `val14`, you only need to download the `val` logs. 
+Optionally, if you want to store the complete training dataset, you can download a pre-processed cache we used to train CaRL (see [`/scripts/download/download_cache.sh`](https://github.com/autonomousvision/CaRL/blob/main/nuPlan/scripts/download/download_cache.sh)). The maps are still required for training/evaluation. For evaluation on `Val14`, you only need to download the `val` logs. 
 
 ## 2.2 Code 📄
 
@@ -92,7 +92,7 @@ cd $CARL_DEVKIT_ROOT
 pip install -e .
 ```
 > [!NOTE]  
-> We use torch version `2.6.0` (instead the nuPlan default `1.9.0`) in CaRL. Moreover, we install `gymnasium` and further requirements on top of the nuplan requirements.
+> We use torch version `2.6.0` (instead the nuPlan default `1.9.0`). Moreover, we install `gymnasium` and further requirements on top of the nuPlan requirements (see `requirements_carl.txt`).
 
 # 3. Training 🏋️
 
@@ -121,7 +121,7 @@ for CHALLENGE in closed_loop_nonreactive_agents_action closed_loop_reactive_agen
     group="$NUPLAN_EXP_ROOT/$CHECKPOINT_NAME"
 done
 ```
-Note that this scripts evaluated the reactive and non-reactive simulation of `val14`. You can find the final results in the experiment folder stored in `"$NUPLAN_EXP_ROOT/$CHECKPOINT_NAME"`.
+Note that this scripts evaluated the reactive and non-reactive simulation of `Val14`. You can find the final results in the experiment folder stored in `"$NUPLAN_EXP_ROOT/$CHECKPOINT_NAME"`.
 
 # 4. Visualization 🎨
 You can visualize the simulations with the nuBoard from the [`nuplan-devkit`](https://github.com/motional/nuplan-devkit). For that, you can run:
