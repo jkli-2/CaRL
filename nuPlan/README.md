@@ -60,7 +60,7 @@ you can run:
 mkdir $HOME/carl_workspace
 cd $HOME/carl_workspace
 git clone git@github.com:autonomousvision/CaRL.git
-git git@github.com:motional/nuplan-devkit.git
+git clone git@github.com:motional/nuplan-devkit.git
 ```
 
 ### 2.2.2 Environment Variables 🌍
@@ -82,12 +82,12 @@ source ~/.bashrc
 cd $CARL_DEVKIT_ROOT
 conda env create --name carl_nuplan -f environment.yml
 
-echo "2. Install nuplan-devkit"
+echo "2. Install nuplan-devkit code"
 conda activate carl_nuplan
 cd $NUPLAN_DEVKIT_ROOT
 pip install -e .
 
-echo "3. Install nuplan-devkit"
+echo "3. Install CaRL code"
 cd $CARL_DEVKIT_ROOT
 pip install -e .
 ```
@@ -95,6 +95,7 @@ pip install -e .
 > We use torch version `2.6.0` (instead the nuPlan default `1.9.0`) in CaRL. Moreover, we install `gymnasium` and further requirements on top of the nuplan requirements.
 
 # 3. Training 🏋️
+
 We provide training script in `/scripts/training`.
 
 
