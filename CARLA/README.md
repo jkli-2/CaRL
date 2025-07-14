@@ -19,6 +19,7 @@ In general, we recommend reading the appendix of [the paper](https://arxiv.org/a
 4. [Benchmarking](#benchmarking)
 5. [Training](#training)
 6. [C++ code](#CPP-Training-and-Evaluation-Code)
+7. [Scenario Generation](#Scenario-generation)
 
 
 ## Setup
