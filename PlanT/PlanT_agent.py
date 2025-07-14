@@ -380,7 +380,7 @@ class PlanTAgent(autonomous_agent.AutonomousAgent):
 
         input_batch["waypoints"] = pred_wp.detach()
         
-        if self.step%25==0:
+        if self.step%25==0 and self.visualize:
             img = viz_batch(input_batch, rgb=input_data["rgb"])
             cv2.imwrite(f"{self.viz_path}/{GameTime.get_frame()}.png", img)
 

@@ -26,7 +26,7 @@ conda env config vars list
 ```
 
 ## Evaluation 🏎️
-Lets get right into running PlanT on a route! You can download the trained checkpoints at [XXXXX](), then specify the paths in [eval.yaml](config/eval.yaml).
+Lets get right into running PlanT on a route! You can download the trained checkpoints [here](https://1drv.ms/f/c/c3093771788ecd57/Eo5BiMk14qZCh2KG91g9pR4BsYBvORXvTBc_gQpT7YoeXA?e=7Degnz), then specify the paths in [eval.yaml](config/eval.yaml). Make sure to activate the conda environment before running the commands.
 ```shell
 # Start CARLA in separate terminal, f.e. using:
 $CARLA_ROOT/CarlaUE4.sh
@@ -41,7 +41,7 @@ python evaluate_routes_slurm.py --routes data/longest6_split --config config/eva
 ```
 
 ## Training 🏋️
-You can train a model by running the `lit_train.py` script, you can find the relevant parameters in the [config.yaml](config/config.yaml) and [PlanT.yaml](config/model/PlanT.yaml) files. The dataset can be found on [HuggingFace](https://huggingface.co/datasets/autonomousvision/PDM_Lite_Carla_LB2/tree/main). Since it also contains RGB and LiDAR data, we provide a lighter, json-only version at [TODO](). If you prefer not to use WandB online, you can run `WANDB_MODE="offline" python lit_train.py`. If you're running the training on a cluster, you might want to change the path in `tmp_folder` to the node's SSD.
+You can train a model by running the `lit_train.py` script, you can find the relevant parameters in the [config.yaml](config/config.yaml) and [PlanT.yaml](config/model/PlanT.yaml) files. The dataset can be found on [HuggingFace](https://huggingface.co/datasets/autonomousvision/PDM_Lite_Carla_LB2/tree/main). Since it also contains RGB and LiDAR data, we provide a lighter, json-only version [here](https://1drv.ms/f/c/c3093771788ecd57/Eo5BiMk14qZCh2KG91g9pR4BsYBvORXvTBc_gQpT7YoeXA?e=7Degnz). If you prefer not to use WandB online, you can run `WANDB_MODE="offline" python lit_train.py`. If you're running the training on a cluster, you might want to change the path in `tmp_folder` to the node's SSD.
 
 # Have fun experimenting! 🧪
 If you have any questions or problems, feel free to open an issue :)
@@ -50,7 +50,6 @@ If you have any questions or problems, feel free to open an issue :)
 ### Explanation of repo structure:
 #### Folders
 - `data` contains the route files for longest6
-- `leaderboard` and `scenario_runner` are the same as used in [CaRL_TODO!]()
 - `carla_garage` contains some useful functions from the [carla garage](https://github.com/autonomousvision/carla_garage/tree/leaderboard_2)
 - `util` contains the old logging methods and a the new visualization
 
