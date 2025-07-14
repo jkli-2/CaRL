@@ -71,7 +71,7 @@ export NUPLAN_MAPS_ROOT="/path/to/nuplan/dataset/maps"
 
 export NUPLAN_EXP_ROOT="$HOME/carl_workspace/exp"
 export NUPLAN_DEVKIT_ROOT="$HOME/carl_workspace/nuplan-devkit"
-export CARL_DEVKIT_ROOT="$HOME/carl_workspace/CaRL"
+export CARL_DEVKIT_ROOT="$HOME/carl_workspace/CaRL/nuPlan"
 ```
 
 ### 2.2.3 Conda environment 🐍
