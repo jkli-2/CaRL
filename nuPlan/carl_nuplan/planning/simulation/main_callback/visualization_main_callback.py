@@ -3,15 +3,16 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 import pandas as pd
+from tqdm import tqdm
+
 from nuplan.planning.simulation.main_callback.abstract_main_callback import (
     AbstractMainCallback,
 )
 from nuplan.planning.simulation.simulation_log import SimulationLog
 from nuplan.planning.utils.multithreading.worker_pool import WorkerPool
 from nuplan.planning.utils.multithreading.worker_utils import worker_map
-from tqdm import tqdm
 
-from carl_nuplan.planning.simulation.main_callback.render_simulation_log import render_simulation_log_v2
+from carl_nuplan.planning.simulation.main_callback.render_simulation_log import render_simulation_log
 
 
 class VisualizationMainCallback(AbstractMainCallback):
@@ -76,7 +77,7 @@ class VisualizationMainCallback(AbstractMainCallback):
         if self._worker is None:
             for simulation_log_path in tqdm(simulation_log_paths):
                 simulation_log = SimulationLog.load_data(simulation_log_path)
-                render_simulation_log_v2(
+                render_simulation_log(
                     simulation_log, self._output_dir / self._visualization_dir
                 )  # TODO: Abstract this function to a renderer class
         else:
@@ -94,7 +95,7 @@ def render_func(args: List[Dict[str, Any]]) -> None:
     def _render_internal(args: List[Dict[str, Any]]) -> None:
         for arg in args:
             simulation_log = SimulationLog.load_data(arg["simulation_log"])
-            render_simulation_log_v2(simulation_log, arg["visualization_dir"])
+            render_simulation_log(simulation_log, arg["visualization_dir"])
 
     _render_internal(args)
 

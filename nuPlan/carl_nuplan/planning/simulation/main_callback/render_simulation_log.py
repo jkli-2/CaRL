@@ -53,7 +53,7 @@ def render_simulation_log(simulation_log: SimulationLog, visualization_folder: P
     height, width, _ = images[0].shape
     video_path = visualization_folder / f"{simulation_log.scenario.token}.avi"
     fourcc = cv2.VideoWriter_fourcc("M", "J", "P", "G")
-    video = cv2.VideoWriter(str(video_path), fourcc, 10, (width, height))
+    video = cv2.VideoWriter(str(video_path), fourcc, 20, (width, height))
     for image in images:
         # Convert numpy array to BGR format for OpenCV
         frame = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)

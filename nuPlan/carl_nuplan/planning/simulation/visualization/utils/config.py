@@ -19,8 +19,8 @@ from carl_nuplan.common.colors import (
 
 BEV_PLOT_CONFIG: Dict[str, Any] = {
     "figure_size": (10, 10),
-    "figure_xlim": (-32, 32),
-    "figure_ylim": (-32, 32),
+    "figure_xlim": (-64, 64),
+    "figure_ylim": (-64, 64),
     "background_color": WHITE,
     "layers": ["map", "tracks"],  # "map", "tracks"
 }

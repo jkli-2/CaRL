@@ -4,3 +4,4 @@ _convert_: 'all'
 log_names: ${splitter.log_splits.train}
 cache_path: ${cache.cache_path}
 format: ${cache.format}
+ignore_log_names: False  

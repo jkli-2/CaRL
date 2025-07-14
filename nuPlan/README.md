@@ -12,7 +12,7 @@
 > [!IMPORTANT]  
 > Before downloading any data, please ensure you have read the [nuPlan license](https://motional-nuplan.s3-ap-northeast-1.amazonaws.com/LICENSE).
 
-In order to train and evaluate CaRL on nuPlan, you need to download the nuPlan dataset according to the [official documentation](https://nuplan-devkit.readthedocs.io/en/latest/dataset_setup.html). You can find a bash script for downloading nuPlan in [`/scripts/download/download_nuplan.sh`](https://github.com/autonomousvision/CaRL/nuPlan/scripts/download/download_nuplan.sh) (~2TB). The data needs to be arranged in the following format:
+In order to train and evaluate CaRL on nuPlan, you need to download the nuPlan dataset according to the [official documentation](https://nuplan-devkit.readthedocs.io/en/latest/dataset_setup.html). You can find a bash script for downloading nuPlan in [`/scripts/download/download_nuplan.sh`](https://github.com/autonomousvision/CaRL/blob/main/nuPlan/scripts/download/download_nuplan.sh) (~2TB). The data needs to be arranged in the following format:
 ```
 nuplan
 ├── exp
@@ -44,7 +44,7 @@ nuplan
          └── sensor_blobs (empty)
 ```
 
-Optionally, if you want to store the complete training dataset, you can download a pre-processed cache we used to train CaRL (see [`/scripts/download/download_cache.sh`](https://github.com/autonomousvision/CaRL/nuPlan/scripts/download/download_nuplan.sh)). The maps are still required for training/evaluation. For evaluation on `val14`, you only need to download the `val` logs. 
+Optionally, if you want to store the complete training dataset, you can download a pre-processed cache we used to train CaRL (see [`/scripts/download/download_cache.sh`](https://github.com/autonomousvision/CaRL/blob/main/nuPlan/scripts/download/download_cache.sh)). The maps are still required for training/evaluation. For evaluation on `val14`, you only need to download the `val` logs. 
 
 ## 2.2 Code 📄
 
@@ -96,7 +96,9 @@ pip install -e .
 
 # 3. Training 🏋️
 
-We provide training script in `/scripts/training`.
+Before you can train a policy, we must first cache the scenarios used during training in a more lightweight format. Constantly querying information from the raw nuPlan logs is rather slow. Thus, we pre-process the nuPlan scenarios and store them as `gzip` files to access them during gym training. You can download our final cache with the script in [`/scripts/download/download_cache.sh`](https://github.com/autonomousvision/CaRL/blob/main/nuPlan/scripts/download/download_cache.sh). If you want to create your own cache (i.e. by changing the `scenario_filter`), you can run [`/scripts/gym/caching.sh`](https://github.com/autonomousvision/CaRL/blob/main/nuPlan/scripts/gym/caching.sh)
+
+We provide training scripts in [`/scripts/gym/`](https://github.com/autonomousvision/CaRL/blob/main/nuPlan/scripts/gym).
 
 
 # 4. Evaluation 🚗
@@ -122,3 +124,11 @@ done
 Note that this scripts evaluated the reactive and non-reactive simulation of `val14`. You can find the final results in the experiment folder stored in `"$NUPLAN_EXP_ROOT/$CHECKPOINT_NAME"`.
 
 # 4. Visualization 🎨
+You can visualize the simulations with the nuBoard from the [`nuplan-devkit`](https://github.com/motional/nuplan-devkit). For that, you can run:
+```
+conda activate carl_nuplan
+python $NUPLAN_DEVKIT_ROOT/nuplan/planning/script/run_nuboard.py
+```
+Optionally, you can render the simulations with our script in `/notebooks/visualize.ipynb`. We added a bunch of `matplotlib` functions to visualize nuPlan datatypes in `/carl_nuplan/planning/simulation/visualization`. 
+
+
