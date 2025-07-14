@@ -1,7 +1,7 @@
 # CaRL - CARLA
 
 This folder contains the code to train and evaluate RL agents with the CARLA leaderboard 2.0.
-In general, we recommend reading the Appendix of the paper if you want to use the code, since it explains many technical details, necessary to understand the code.
+In general, we recommend reading the Appendix of [the paper](https://arxiv.org/abs/2504.17838) if you want to use the code, since it explains many technical details, necessary to understand the code.
 
 ### Structure:
 * [custom_leaderboard](custom_leaderboard) contains a modified version of the CARLA leaderboard 2.0 that is much faster for RL training than the original. It is used to train models.
@@ -141,9 +141,47 @@ The training code is highly configurable, you can find the right hyperparameters
 * [train_carl_py.sh](team_code/train_carl_py.sh) Trains the CaRL method (300M samples run) using the python training code.
 * [train_carl_cpp.sh](team_code/train_carl_cpp.sh) Trains the CaRL method (300M samples run) using the C++ training code.
 
+Every parameter has a one sentence description about what it does in the [argument parser](team_code/dd_ppo.py).
+But in general this is a research repo, so we do not have extensive documentation. I recommend to use Ctrl+Shift+f (or your editors equivalent) to find the parameter in the code and just read the code to learn what it does.
+
+The config system work such that every parameter has a default value that is loaded from [rl_config.py](team_code/rl_config.py). Most relevant parameters can be changed by using command line arguments `--parametername value`. The parameter is then automatically overwritten and the new config is saved in a [config.json](results/CaRL_PY_00/config.json) file alongside the model. During inference or restarting of training the values in the config.json file are automatically loaded overwriting the default values. 
+The nice thing about this config system is that one can easily add features while ensuring backwards compatibility with models trained with older code versions.
+For that I set the default value in the default config such that the new feature is turned off by default.
+If an old model is then run with the new code the default value of the parameter is then loaded because the parameter is not in config.json, ensuring that the new feature is turned off and the old model still runs as intended.
 
 ## CPP Training and Evaluation Code
+The training evaluation code for the C++ implementation of CaRL is hosted in the [ppo.cpp](https://github.com/autonomousvision/ppo.cpp) repository.
+To use it clone the repository and follow the instructions to build the singularity container and compile the binaries.
+The code can also be built to run natively on your system, but I recommend using the singularity container option since it is much more convenient and doesn't seem to affect performance.
 
+Evaluating a model works the same way as with the python code, but you additionally have to specify the following environment variables:
+
+```Shell
+export PPO_CPP_INSTALL_PATH=/path/to/folder/with/binaries # The C++ binaries you built
+export PATH_TO_SINGULARITY=/path/to/ppo_cpp.sif # The singularity container
+export PYTORCH_KERNEL_CACHE_PATH=~/.cache/torch  # Path to the PyTorch cache folder, makes it visible inside the container
+```
+
+Training a model works similarly to training with the pytorch code and is started using the [train_parallel.py](team_code/train_parallel.py) script. You additionally have to set the following options, for an example see [here](team_code/train_carl_cpp.sh).
+
+```Shell
+--train_cpp 1
+--PYTORCH_KERNEL_CACHE_PATH /path/to/.cache
+--ppo_cpp_install_path /path/to/folder/with/cpp/binaries
+--cpp_singularity_file_path /path/to/ppo_cpp.sif 
+--cpp_system_lib_path_1 /path/to/missing/system/libs  # In case there is some system library that the code can't find you can link the path here. You will most likely not need it, everything should be included inside the container. In that case set it to a random folder.
+```
+
+The C++ training code is written in a way so that model configuration works mostly the same as the python code.
+Both codes store and load parameters from a config.json, they start with default parameters loaded from a default config class which can be overwritten using arguments from the command line with the `--parametername value` and the parameters have the same name.
+
+There are a few differences though. The C++ code implements a subset of the options available in the python code.
+All features used in CaRL are implemented, but the python code has some additional features that I did not end up using in CaRL which are not implemented in C++.
+Also, I have not implemented the `use_exploration_suggest` feature from the Roach baseline in the C++ code. 
+
+Lastly, PPO has a few hyperparameters that are dependent on each other. For example, you either set `--total_minibatch_size` and `--total_batch_size`, or you set `--num_steps` and `--num_minibatches`. Unfortunately, I have changed my mind about which one is more convenient to set and now the python code implements the former and the C++ code implements the latter.
+This has no effect on the algorithm, but you need to familiarize yourself with the parameters and set them correctly.
+You can compare [train_carl_py.sh](team_code/train_carl_py.sh) with [train_carl_cpp.sh](team_code/train_carl_cpp.sh) to have an example.
 
 ## Viewing training logs
 Start tensorboard with tensorboard --logdir /home/jaeger/ordnung/internal/CaRL/CARLA/results --load_fast=false
