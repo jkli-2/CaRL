@@ -213,7 +213,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--save_folder',
                         type=str,
-                        default=r'/home/jaeger/ordnung/internal/ad_planning/2_carla/custom_leaderboard/leaderboard/data'
+                        default=r'/home/jaeger/ordnung/internal/CaRL/CARLA/custom_leaderboard/leaderboard/data'
                                 r'/debug_routes_with_scenarios/',
                         help='folder where to save the root files')
     parser.add_argument('--carla_root',
@@ -226,7 +226,7 @@ def main():
                         help='start_repetition to run')
     parser.add_argument('--scenario_runner_root',
                         type=str,
-                        default=r'/home/jaeger/ordnung/internal/ad_planning/2_carla/custom_leaderboard/scenario_runner',
+                        default=r'/home/jaeger/ordnung/internal/CaRL/CARLA/custom_leaderboard/scenario_runner',
                         help='root folder of scenario runner')
     parser.add_argument('--scenario_dilation',
                         default=100,

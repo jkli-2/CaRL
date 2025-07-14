@@ -100,7 +100,7 @@ export PYTORCH_KERNEL_CACHE_PATH=~/.cache/torch # Path to pytorch cache
 To train a model, you need to start two Python processes one for the leaderboard and one for the training code; they communicate via message passing.
 CARLA leaderboard:
 ```Shell
-python ${WORK_DIR}/custom_leaderboard/leaderboard/leaderboard/leaderboard_evaluator.py --routes ${WORK_DIR}/custom_leaderboard/leaderboard/data/debug_routes_with_scenarios/route_Town03_00.xml.gz --agent ${WORK_DIR}/team_code/env_agent.py --resume 0 --checkpoint ${WORK_DIR}/results/debug_00.json --track MAP --port 2000 --traffic-manager-port 8000 --agent-config /home/jaeger/ordnung/internal/ad_planning/2_carla/results/PPO_debug --gym_port 5555 --debug 0 --repetitions 100 --frame_rate 10.0 --no_rendering_mode False --timeout 900 --skip_next_route False --runtime_timeout 900
+python ${WORK_DIR}/custom_leaderboard/leaderboard/leaderboard/leaderboard_evaluator.py --routes ${WORK_DIR}/custom_leaderboard/leaderboard/data/debug_routes_with_scenarios/route_Town03_00.xml.gz --agent ${WORK_DIR}/team_code/env_agent.py --resume 0 --checkpoint ${WORK_DIR}/results/debug_00.json --track MAP --port 2000 --traffic-manager-port 8000 --agent-config /home/jaeger/ordnung/internal/CaRL/CARLA/results/PPO_debug --gym_port 5555 --debug 0 --repetitions 100 --frame_rate 10.0 --no_rendering_mode False --timeout 900 --skip_next_route False --runtime_timeout 900
 ```
 training script dd_ppo.py:
 The training script is highly configurable with many parameters. You can find the documentation at the start of [dd_ppo.py](team_code/dd_ppo.py). The parameters here do not correspond to any particular model and are just meant to get the code running for debugging.

@@ -82,7 +82,7 @@ if __name__ == '__main__':
     parser.add_argument('--exp_name', type=str, default='PPO_000', help='the name of this experiment')
     parser.add_argument('--git_root',
                         type=str,
-                        default=r'/home/jaeger/ordnung/internal/ad_planning/2_carla',
+                        default=r'/home/jaeger/ordnung/internal/CaRL/CARLA',
                         help='root folder of 2_carla')
     parser.add_argument('--gpu_ids',
                         nargs='+',

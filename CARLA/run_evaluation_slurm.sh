@@ -5,8 +5,8 @@
 #SBATCH --time=1-00:00
 #SBATCH --gres=gpu:0
 #SBATCH --cpus-per-task=1
-#SBATCH --output=/mnt/lustre/work/geiger/bjaeger25/ad_planning/2_carla/results/logs/eval_server_%a_%A.out
-#SBATCH --error=/mnt/lustre/work/geiger/bjaeger25/ad_planning/2_carla/results/logs/eval_server_%a_%A.err
+#SBATCH --output=/mnt/lustre/work/geiger/bjaeger25/CaRL/CARLA/results/logs/eval_server_%a_%A.out
+#SBATCH --error=/mnt/lustre/work/geiger/bjaeger25/CaRL/CARLA/results/logs/eval_server_%a_%A.err
 #SBATCH --partition=2080-galvani
 
 # print info about current job

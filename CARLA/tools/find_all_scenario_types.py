@@ -1,7 +1,7 @@
 import xml.etree.ElementTree as ET
 
-IN_PATH = r'/home/jaeger/ordnung/internal/ad_planning/2_carla/custom_leaderboard/leaderboard/data/routes_training.xml'
-IN_PATH2 = r'/home/jaeger/ordnung/internal/ad_planning/2_carla/custom_leaderboard/leaderboard/data/routes_validation.xml'
+IN_PATH = r'/home/jaeger/ordnung/internal/CaRL/CARLA/custom_leaderboard/leaderboard/data/routes_training.xml'
+IN_PATH2 = r'/home/jaeger/ordnung/internal/CaRL/CARLA/custom_leaderboard/leaderboard/data/routes_validation.xml'
 
 all_types = []
 

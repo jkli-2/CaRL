@@ -145,11 +145,11 @@ def main():
                       help='Name of folder where the model files are stored in e.g. PPO_020_00')
   parser.add_argument('--model_dir',
                       type=str,
-                      default='/mnt/lustre/work/geiger/bjaeger25/ad_planning/2_carla/results',
+                      default='/mnt/lustre/work/geiger/bjaeger25/CaRL/CARLA/results',
                       help='Folder containing all the experiment folders.')
   parser.add_argument('--code_root',
                       type=str,
-                      default='/mnt/lustre/work/geiger/bjaeger25/ad_planning/2_carla',
+                      default='/mnt/lustre/work/geiger/bjaeger25/CaRL/CARLA',
                       help='Root folder containing all the code folders.')
   parser.add_argument('--carla_root',
                       type=str,
@@ -170,7 +170,7 @@ def main():
                       help='Model names to be evaluated')
   parser.add_argument('--team_code',
                       type=str,
-                      default='team_code_roach',
+                      default='team_code',
                       help='Which team code folder to use')
   parser.add_argument('--num_repetitions',
                       type=int,

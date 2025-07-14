@@ -4,7 +4,7 @@ From: carlasim/carla:0.9.15
 
 %files
     /home/jaeger/ordnung/internal/carla_9_15 /home/
-    /home/jaeger/ordnung/internal/ad_planning /home/
+    /home/jaeger/ordnung/internal/CaRL /home/
 
 %post
     apt-get -y update
@@ -20,7 +20,7 @@ From: carlasim/carla:0.9.15
     rm -rf ~/miniconda3/miniconda.sh
     /opt/miniconda3/bin/conda init bash
 
-    /opt/miniconda3/bin/conda env create -f /home/ad_planning/2_carla/environment.yml
+    /opt/miniconda3/bin/conda env create -f /home/CaRL/CARLA/environment.yml
 
     . /opt/miniconda3/etc/profile.d/conda.sh
     conda activate 2_rl
