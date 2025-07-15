@@ -14,7 +14,7 @@ The code and documentation for the respective simulators can be found in the [CA
 - [X] CaRL nuPlan
 - [X] PlanT
 - [ ] Think2Drive
-- 
+
 ## License
 
 The original code in this repository is provided under the Civil-M license, which is a variant of the MIT license that bans dual-use. [The license](LICENSE) contains a partial copyleft which requires derivative work to include the civil clause in their license. For further information see the accompaning documentation on [Civil Software Licenses](docs/Jaeger2025LicenseWhitepaper.pdf).
