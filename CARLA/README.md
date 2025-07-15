@@ -54,8 +54,6 @@ All models are licensed under the same license as the code.
 
 Each folder has an `config.json` containing all hyperparameters, which will automatically be loaded and override default hyperparameters. The folder also contains a `model_final.pth` which is the model from the last PPO iteration, and an `optimizer_final.pth` which are the Adam parameters from the last iteration.
 
-TODO Think2Drive and PlanT
-
 ## Local Debugging
 
 To debug evaluation or training, you need to start a CARLA server (or multiple):
