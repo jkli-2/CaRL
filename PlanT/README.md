@@ -51,7 +51,7 @@ If you have any questions or problems, feel free to open an issue :)
 #### Folders
 - `data` contains the route files for longest6
 - `carla_garage` contains some useful functions from the [carla garage](https://github.com/autonomousvision/carla_garage/tree/leaderboard_2)
-- `util` contains the old logging methods and a the new visualization
+- `util` contains the old logging methods and the new visualization
 
 #### Files
 - `PlanT_agent.py` is the CARLA agent
@@ -61,5 +61,3 @@ If you have any questions or problems, feel free to open an issue :)
 - `lit_module.py` is the PyTorch Lightning module of the model
 - `lit_train.py` is the training script
 - `model.py` contains the PlanT model
-
-# License und Citation?
