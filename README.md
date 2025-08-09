@@ -13,7 +13,7 @@ The code and documentation for the respective simulators can be found in the [CA
 - [X] CaRL CARLA
 - [X] CaRL nuPlan
 - [X] PlanT
-- [ ] Think2Drive
+- [X] Think2Drive
 
 ## License
 

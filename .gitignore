@@ -25,6 +25,11 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+Think2Drive/dreamerv3/logdir
+Think2Drive/logdir
+Think2Drive/dreamerv3/results_training
+wandb/
+training_logs/
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
