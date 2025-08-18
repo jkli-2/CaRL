@@ -9,12 +9,6 @@
 This repository contains the first public codebase for doing Reinforcement Learning with the [CARLA leaderboard 2.0](https://leaderboard.carla.org/) and [nuPlan](https://www.nuscenes.org/nuplan). We provide pre-trained model weights for CaRL which is the best open-source RL planner on longest6 v2 and nuPlan. Additionally, we provide reproductions of the popular CARLA planners [Roach](https://arxiv.org/abs/2108.08265), [PlanT](https://arxiv.org/abs/2210.14222) and [Think2Drive](https://arxiv.org/abs/2402.16720) for the CARLA leaderboard 2.0.
 The code and documentation for the respective simulators can be found in the [CARLA folder](CARLA) and the [nuPlan_folder](nuPlan).
 
-## TODO
-- [X] CaRL CARLA
-- [X] CaRL nuPlan
-- [X] PlanT
-- [X] Think2Drive
-
 ## License
 
 The original code in this repository is provided under the Civil-M license, which is a variant of the MIT license that bans dual-use. [The license](LICENSE) contains a partial copyleft which requires derivative work to include the civil clause in their license. For further information see the accompaning documentation on [Civil Software Licenses](docs/Jaeger2025LicenseWhitepaper.pdf).
