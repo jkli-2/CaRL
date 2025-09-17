@@ -37,6 +37,100 @@ jsonpickle_numpy.register_handlers()
 jsonpickle.set_encoder_options('json', sort_keys=True, indent=4)
 torch.set_num_threads(1)
 
+# Functions for log observation measurements
+MEAS_NAMES = [
+    "speed_mps",            # 0
+    "cte_m",                # 1
+    "route_progress",       # 2
+    "steer_cmd_prev",       # 3
+    "accel_cmd_prev",       # 4
+    "brake_cmd_prev",       # 5
+    "heading_err_rad",      # 6
+    "dist_to_goal_m",       # 7
+]
+
+def log_measurements(m):
+    if not isinstance(m, torch.Tensor):
+        m = torch.tensor(m, dtype=torch.float32)
+
+    # Flatten to 1D: handles (1,8), (8,1), etc.
+    m = m.reshape(-1)
+
+    bad = ~torch.isfinite(m)
+    if bad.any():
+        bad_idx = torch.nonzero(bad, as_tuple=False).flatten().tolist()
+        # move only the bad values to CPU for printing
+        vals = m[bad].detach().cpu().tolist()
+        print("[MEAS-NaN]", {MEAS_NAMES[i]: str(vals[j]) for j, i in enumerate(bad_idx)})
+
+def _to_numpy_safe(x):
+    if isinstance(x, torch.Tensor):
+        # don’t backprop from debug; keep it tiny and safe
+        x = x.detach()
+        try:
+            x = x.float().cpu().numpy()  # works for cuda/cpu tensors
+        except Exception:
+            # last resort: move to cpu without cast
+            x = x.cpu().numpy()
+    elif isinstance(x, (list, tuple)):
+        try:
+            x = np.array(x)
+        except Exception:
+            x = np.array(x, dtype=np.object_)
+    return x
+
+def debug_obs(obs, step: int, name="OBS", max_print=3):
+    try:
+        if isinstance(obs, dict):
+            print(f"[{name}-SPACE step {step}] dict with keys: {list(obs.keys())}")
+            for k, v in obs.items():
+                arr = _to_numpy_safe(v)
+                if not isinstance(arr, np.ndarray):
+                    try: arr = np.array(arr)
+                    except Exception: pass
+                shape = getattr(arr, "shape", None)
+                dtype = getattr(arr, "dtype", type(arr))
+                # stats (guard against all-NaN)
+                nan_mask = np.isnan(arr) if np.issubdtype(getattr(arr, "dtype", np.float32), np.floating) else np.zeros((), dtype=bool)
+                inf_mask = np.isinf(arr) if nan_mask.shape != () else np.zeros((), dtype=bool)
+                try:
+                    vmin = np.nanmin(arr)
+                    vmax = np.nanmax(arr)
+                except Exception:
+                    vmin = vmax = "n/a"
+                n_nan = int(np.sum(nan_mask)) if hasattr(arr, "size") else 0
+                n_inf = int(np.sum(inf_mask)) if hasattr(arr, "size") else 0
+                size  = int(arr.size) if hasattr(arr, "size") else 0
+                nan_pct = (100.0 * n_nan / max(size,1)) if size else 0.0
+                inf_pct = (100.0 * n_inf / max(size,1)) if size else 0.0
+                print(f"[{name}-DEBUG step {step}] {k}: shape={shape}, dtype={dtype}, "
+                      f"min={vmin}, max={vmax}, NaNs={n_nan} ({nan_pct:.4f}%), Infs={n_inf} ({inf_pct:.4f}%)")
+                # small sample to catch eg. uint8 range
+                try:
+                    flat = arr.reshape(-1)
+                    print(f"[{name}-SAMPLE step {step}] {k}: {flat[:max_print]}")
+                except Exception:
+                    pass
+        else:
+            arr = _to_numpy_safe(obs)
+            shape = getattr(arr, "shape", None)
+            dtype = getattr(arr, "dtype", type(arr))
+            try:
+                vmin = np.nanmin(arr)
+                vmax = np.nanmax(arr)
+            except Exception:
+                vmin = vmax = "n/a"
+            n_nan = int(np.sum(np.isnan(arr))) if isinstance(arr, np.ndarray) and np.issubdtype(arr.dtype, np.floating) else 0
+            n_inf = int(np.sum(np.isinf(arr))) if isinstance(arr, np.ndarray) and np.issubdtype(arr.dtype, np.floating) else 0
+            size  = int(arr.size) if isinstance(arr, np.ndarray) else 0
+            nan_pct = (100.0 * n_nan / max(size,1)) if size else 0.0
+            inf_pct = (100.0 * n_inf / max(size,1)) if size else 0.0
+            print(f"[{name}-DEBUG step {step}]: shape={shape}, dtype={dtype}, "
+                  f"min={vmin}, max={vmax}, NaNs={n_nan} ({nan_pct:.4f}%), Infs={n_inf} ({inf_pct:.4f}%)")
+    except Exception as e:
+        print(f"[{name}-DEBUG step {step}] (non-fatal) debug failed: {e}")
+
+# End of log helpers
 
 def strtobool(v):
   return str(v).lower() in ('yes', 'y', 'true', 't', '1', 'True')
@@ -736,6 +830,8 @@ def main():
 
   agent = PPOPolicy(env.single_observation_space, env.single_action_space, config=config).to(device)
 
+  # print("[OBS-SPACE]", env.single_observation_space)
+
   if config.compile_model:
     agent = torch.compile(agent)
 
@@ -918,6 +1014,8 @@ def main():
       # ALGO LOGIC: action logic
       with torch.no_grad():
         t1.tic()
+        # debug_obs(next_obs, step)
+        # log_measurements(obs['measurements'][step])
         action, logprob, _, value, _, mu, sigma, _, _, _, next_lstm_state = agent.forward(next_obs,
                                                                                           lstm_state=next_lstm_state,
                                                                                           done=next_done)
