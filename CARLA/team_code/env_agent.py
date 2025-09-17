@@ -35,6 +35,30 @@ from nav_planner import RoutePlanner
 jsonpickle_numpy.register_handlers()
 jsonpickle.set_encoder_options('json', sort_keys=True, indent=4)
 
+# Safe guards for measurements
+def _finite(x, default=0.0):
+    try:
+        import numpy as _np
+        if isinstance(x, (list, tuple)):
+            return [_finite(v, default) for v in x]
+        return float(x) if _np.isfinite(x) else float(default)
+    except Exception:
+        # last-resort
+        try:
+            return float(x)
+        except Exception:
+            return float(default)
+
+def _safe_inverse_conversion_2d(v_xy, yaw_rad):
+    """Guarded version of rl_u.inverse_conversion_2d for first-tick/NaN inputs."""
+    import numpy as _np
+    vx, vy = float(v_xy[0]), float(v_xy[1])
+    if not _np.isfinite(vx): vx = 0.0
+    if not _np.isfinite(vy): vy = 0.0
+    if not _np.isfinite(yaw_rad): yaw_rad = 0.0
+    c, s = _np.cos(yaw_rad), _np.sin(yaw_rad)
+    # rotation into ego frame (no division anywhere)
+    return _np.array([c*vx + s*vy, -s*vx + c*vy], dtype=_np.float32)
 
 # Leaderboard function that selects the class used as agent.
 def get_entry_point():
@@ -186,19 +210,28 @@ class EnvAgent(autonomous_agent.AutonomousAgent):
     transform = self.vehicle.get_transform()
     forward_vec = transform.get_forward_vector()
 
-    np_vel = np.array([velocity.x, velocity.y, velocity.z])
-    np_fvec = np.array([forward_vec.x, forward_vec.y, forward_vec.z])
-    forward_speed = np.dot(np_vel, np_fvec)
+    # --- velocities & forward vector
+    np_vel = np.array([velocity.x, velocity.y, velocity.z], dtype=np.float32)
+    np_fvec = np.array([forward_vec.x, forward_vec.y, forward_vec.z], dtype=np.float32)
+    # dot product is safe if inputs are finite; guard them:
+    np_vel[~np.isfinite(np_vel)] = 0.0
+    np_fvec[~np.isfinite(np_fvec)] = 0.0
+    forward_speed = float(np.dot(np_vel, np_fvec))
+    if not np.isfinite(forward_speed):
+      forward_speed = 0.0
 
-    np_vel_2d = np.array([velocity.x, velocity.y])
-    velocity_ego_frame = rl_u.inverse_conversion_2d(np_vel_2d, np.zeros(2), np.deg2rad(transform.rotation.yaw))
+    # ego-frame vel (guard yaw and inputs)
+    yaw_rad = np.deg2rad(transform.rotation.yaw)
+    velocity_ego_frame = _safe_inverse_conversion_2d(
+        np.array([velocity.x, velocity.y], dtype=np.float32), yaw_rad
+    )
 
     # acceleration = self.vehicle.get_acceleration()
     # np_acceleration_2d = np.array([acceleration.x, acceleration.y])
     # acc_ego_frame = rl_u.inverse_conversion_2d(np_acceleration_2d, np.zeros(2), np.deg2rad(transform.rotation.yaw))
 
     speed_limit = self.vehicle.get_speed_limit()
-    if isinstance(speed_limit, float):
+    if isinstance(speed_limit, float) and np.isfinite(speed_limit):
       # Speed limit is in km/h we compute with m/s, so we convert it by / 3.6
       maximum_speed = speed_limit / 3.6
     else:
@@ -206,11 +239,14 @@ class EnvAgent(autonomous_agent.AutonomousAgent):
       maximum_speed = self.config.rr_maximum_speed
 
     measurements = [
-        last_control.steer, last_control.throttle, last_control.brake,
-        float(last_control.gear),
-        float(velocity_ego_frame[0]),
-        float(velocity_ego_frame[1]),
-        float(forward_speed), maximum_speed
+      _finite(last_control.steer,    0.0),  # 0
+      _finite(last_control.throttle, 0.0),  # 1
+      _finite(last_control.brake,    0.0),  # 2
+      _finite(last_control.gear,     0.0),  # 3
+      _finite(velocity_ego_frame[0], 0.0),  # 4
+      _finite(velocity_ego_frame[1], 0.0),  # 5
+      _finite(forward_speed,         0.0),  # 6
+      _finite(maximum_speed,         0.0),  # 7
     ]
 
     if self.config.use_extra_control_inputs:
@@ -239,7 +275,9 @@ class EnvAgent(autonomous_agent.AutonomousAgent):
       measurements.append(bev_semantics['target_point'][0])
       measurements.append(bev_semantics['target_point'][1])
 
-    observations['measurements'] = np.array(measurements, dtype=np.float32)
+    measurements = np.array(measurements, dtype=np.float32)
+    measurements = np.nan_to_num(measurements, nan=0.0, posinf=1e6, neginf=-1e6)
+    observations['measurements'] = measurements
     # Add remaining time till timeout. remaining time till blocked, remaining route to help return prediction
     remaining_time = (float(self.config.eval_time) - timestamp) / float(self.config.eval_time)
     time_till_blocked = self.reward_handler.block_detector.time_till_blocked

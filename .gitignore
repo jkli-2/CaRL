@@ -30,6 +30,7 @@ Think2Drive/logdir
 Think2Drive/dreamerv3/results_training
 wandb/
 training_logs/
+events.out.tfevents.*
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
