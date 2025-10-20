@@ -13,6 +13,18 @@ import re
 import socket
 
 
+def wait_for_port(host, port, timeout=120):
+    t0 = time.time()
+    while time.time() - t0 < timeout:
+        print("Waiting...", port)
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.settimeout(1.0)
+            if s.connect_ex((host, port)) == 0:
+                return True
+        time.sleep(0.5)
+    return False
+
+
 def strtobool(v):
   return str(v).lower() in ('yes', 'y', 'true', 't', '1', 'True')
 
