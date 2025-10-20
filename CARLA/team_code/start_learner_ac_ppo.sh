@@ -33,4 +33,9 @@ c="${a} ${b}"
 
 echo ${c}
 
-singularity exec --nv --env LD_LIBRARY_PATH=${ppo_cpp_install_path}:${system_lib_path_1}:${system_lib_path_2}:$LD_LIBRARY_PATH --env PYTORCH_KERNEL_CACHE_PATH="${PYTORCH_KERNEL_CACHE_PATH}" --env HWLOC_COMPONENTS=-gl --env CUBLAS_WORKSPACE_CONFIG=:4096:8 --bind ${system_lib_path_1}:${system_lib_path_1},${system_lib_path_2}:${system_lib_path_2},${ppo_cpp_install_path}:${ppo_cpp_install_path},${git_root}:${git_root},${PYTORCH_KERNEL_CACHE_PATH}:${PYTORCH_KERNEL_CACHE_PATH},${SCRATCH}:${SCRATCH},${logdir}:${logdir} ${cpp_singularity_file_path} bash -c "${c}"
+#singularity exec --nv --env LD_LIBRARY_PATH=${ppo_cpp_install_path}:${system_lib_path_1}:${system_lib_path_2}:$LD_LIBRARY_PATH --env PYTORCH_KERNEL_CACHE_PATH="${PYTORCH_KERNEL_CACHE_PATH}" --env HWLOC_COMPONENTS=-gl --env CUBLAS_WORKSPACE_CONFIG=:4096:8 --bind ${system_lib_path_1}:${system_lib_path_1},${system_lib_path_2}:${system_lib_path_2},${ppo_cpp_install_path}:${ppo_cpp_install_path},${git_root}:${git_root},${PYTORCH_KERNEL_CACHE_PATH}:${PYTORCH_KERNEL_CACHE_PATH},${SCRATCH}:${SCRATCH},${logdir}:${logdir} ${cpp_singularity_file_path} bash -c "${c}"
+export LD_LIBRARY_PATH=${ppo_cpp_install_path}:${system_lib_path_1}:${system_lib_path_2}:$LD_LIBRARY_PATH 
+export PYTORCH_KERNEL_CACHE_PATH="${PYTORCH_KERNEL_CACHE_PATH}"
+export HWLOC_COMPONENTS=-gl
+export CUBLAS_WORKSPACE_CONFIG=:4096:8
+bash -c "${c}"
