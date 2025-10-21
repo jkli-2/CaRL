@@ -1,5 +1,31 @@
 # CaRL - CARLA
 
+## How to use this repo:
+
+### Step 1.
+
+singularity run --nv --bind /usr/local/cuda-12.8:/usr/local/cuda /usr/local/containers/miniconda3-py310.sif
+
+or if using ppo_ccp:
+
+singularity exec --nv --bind /usr/local/cuda-12.8:/usr/local/cuda /data/junkali/ppo.cpp/tools/ppo_cpp.sif bash
+
+### Step 2.
+
+cd /data/junkali/CaRL/CARLA
+
+### Step 3.
+
+source .env
+
+### Step 4.
+
+conda activate carl
+
+Below is the original content from upstream.
+
+---
+
 This folder contains the code to train and evaluate RL agents with the CARLA leaderboard 2.0.
 In general, we recommend reading the appendix of [the paper](https://arxiv.org/abs/2504.17838) if you want to use the code, since it explains many technical details necessary to understand the code.
 
