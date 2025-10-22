@@ -16,6 +16,16 @@ USED_SCENARIOS = {
     'ConstructionObstacle',
     'ConstructionObstacleTwoWays'
 }
+INCLUDED_TOWNS = {
+    'Town01',
+    'Town02',
+    'Town03',
+    'Town04',
+    'Town05',
+    'Town06',
+    'Town07',
+    'Town10HD'
+}
 
 def main():
     tree = ET.parse(INPUT_XML)
@@ -27,10 +37,11 @@ def main():
     filtered_routes = ET.Element("routes")
 
     for route in root.findall("route"):
+        town = route.get("town", "")
         scenario_elem = route.find("scenarios/scenario")
         if scenario_elem is not None:
             scenario_type = scenario_elem.get("type", "")
-            if scenario_type in USED_SCENARIOS:
+            if scenario_type in USED_SCENARIOS and town in INCLUDED_TOWNS:
                 filtered_routes.append(route)
 
     new_tree = ET.ElementTree(filtered_routes)
