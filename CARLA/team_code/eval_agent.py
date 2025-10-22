@@ -147,11 +147,11 @@ class EvalAgent(autonomous_agent.AutonomousAgent):
           f'--path_to_conf_file {path_to_conf_file} --ipc_path {path_to_comm} --port {self.port}',
           flush=True)
       # Starts the C++ process that runs the model in a singularity container.
+      # NOTE: see the print command above for the original version
+      # In this project, singularity environment is handled externally, so
+      # no need to call singularity exec
       _ = subprocess.Popen(  # pylint: disable=locally-disabled, consider-using-with
-          f'singularity exec --nv --env LD_LIBRARY_PATH={ppo_cpp_install_path}:$LD_LIBRARY_PATH '
-          f'--env PYTORCH_KERNEL_CACHE_PATH={torch_kernel_cache} --bind {path_to_conf_file}:{path_to_conf_file},'
-          f'{ppo_cpp_install_path}:{ppo_cpp_install_path},{path_to_comm}:{path_to_comm},{torch_kernel_cache}'
-          f':{torch_kernel_cache} {path_to_singularity} {ppo_cpp_install_path}/ppo_carla_inference '
+          f'{ppo_cpp_install_path}/ppo_carla_inference '
           f'--path_to_conf_file {path_to_conf_file} --ipc_path {path_to_comm} --port {self.port}',
           shell=True)
       self.context = zmq.Context()
