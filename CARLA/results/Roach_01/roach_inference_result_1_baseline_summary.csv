@@ -1,0 +1,14 @@
+route_id,scenario_type,status,score_composed,score_penalty,score_route,duration_game,duration_system,num_infractions
+RouteScenario_24211_rep0,DynamicObjectCrossing,Failed - Agent got blocked,34.748516,0.352813,98.49,202.5,129.202,5
+RouteScenario_24224_rep0,DynamicObjectCrossing,Failed - Agent got blocked,32.114432,0.326068,98.49,202.4,122.183,6
+RouteScenario_24330_rep0,HardBreakRoute,Failed - Agent got blocked,22.204231,0.226551,98.01,209.25,153.915,7
+RouteScenario_24340_rep0,ControlLoss,Failed - Agent got blocked,39.23612,0.400328,98.01,200.65,100.168,6
+RouteScenario_24781_rep0,HardBreakRoute,Failed - Agent got blocked,18.204513,0.18493,98.44,232.4,177.804,6
+RouteScenario_24784_rep0,ControlLoss,Failed - Agent got blocked,64.758061,0.660392,98.06,273.5,204.559,5
+RouteScenario_24841_rep0,ControlLoss,Failed - Agent got blocked,72.223835,0.73346,98.47,202.65,100.14,5
+RouteScenario_26406_rep0,HardBreakRoute,Completed,48.212817,0.482128,100.0,43.9,26.046,5
+RouteScenario_26456_rep0,HardBreakRoute,Failed - Agent got blocked,38.041112,0.386283,98.48,214.05,102.151,7
+RouteScenario_26944_rep0,OppositeVehicleRunningRedLight,Failed - Agent got blocked,24.880079,0.97378,25.55,189.5,140.101,2
+RouteScenario_26950_rep0,OppositeVehicleRunningRedLight,Failed - Agent timed out,97.39,1.0,97.39,391.65,277.348,1
+RouteScenario_26956_rep0,SignalizedJunctionRightTurn,Failed - Agent got blocked,32.793067,0.332452,98.64,201.2,102.139,4
+RouteScenario_26966_rep0,SignalizedJunctionRightTurn,Failed - Agent got blocked,31.828629,0.326716,97.42,200.8,157.167,4

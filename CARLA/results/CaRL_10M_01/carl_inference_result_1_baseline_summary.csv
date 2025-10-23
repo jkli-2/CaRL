@@ -1,0 +1,14 @@
+route_id,scenario_type,status,score_composed,score_penalty,score_route,duration_game,duration_system,num_infractions
+RouteScenario_24211_rep0,DynamicObjectCrossing,Completed,49.952,0.49952,100.0,19.65,6.006,2
+RouteScenario_24224_rep0,DynamicObjectCrossing,Completed,49.691,0.49691,100.0,13.7,4.004,2
+RouteScenario_24330_rep0,HardBreakRoute,Completed,50.514083,0.505141,100.0,25.55,14.1,3
+RouteScenario_24340_rep0,ControlLoss,Completed,98.152053,0.981521,100.0,15.45,5.005,2
+RouteScenario_24781_rep0,HardBreakRoute,Completed,53.946883,0.539469,100.0,53.7,23.417,4
+RouteScenario_24784_rep0,ControlLoss,Completed,72.14294,0.721429,100.0,45.95,21.286,2
+RouteScenario_24841_rep0,ControlLoss,Completed,89.40856,0.894086,100.0,21.9,6.008,3
+RouteScenario_26406_rep0,HardBreakRoute,Completed,50.416788,0.504168,100.0,31.5,10.011,3
+RouteScenario_26456_rep0,HardBreakRoute,Completed,70.299057,0.702991,100.0,79.35,15.016,3
+RouteScenario_26944_rep0,OppositeVehicleRunningRedLight,Failed - Agent got blocked,34.032,0.6,56.72,192.3,89.644,2
+RouteScenario_26950_rep0,OppositeVehicleRunningRedLight,Perfect,100.0,1.0,100.0,13.85,8.377,0
+RouteScenario_26956_rep0,SignalizedJunctionRightTurn,Completed,56.6772,0.566772,100.0,19.2,7.009,2
+RouteScenario_26966_rep0,SignalizedJunctionRightTurn,Completed,60.0,0.6,100.0,17.2,10.334,1
