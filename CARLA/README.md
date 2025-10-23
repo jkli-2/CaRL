@@ -24,6 +24,11 @@ conda activate carl
 
 Below is the original content from upstream.
 
+## Launch CARLA
+
+`./CarlaUE4.sh -carla-rpc-port=2000 -nosound -nullrhi -carla-primary-port=2003 -carla-streaming-port=2006 -RenderOffScreen -graphicsadapter=0 -RPCThreads=2 -StreamingThreads=2 -SecondaryThreads=2 -nothreading`
+`./CarlaUE4.sh -carla-rpc-port=3000 -nosound -nullrhi -carla-primary-port=3003 -carla-streaming-port=3006 -RenderOffScreen -graphicsadapter=1 -RPCThreads=2 -StreamingThreads=2 -SecondaryThreads=2 -nothreading`
+
 ---
 
 This folder contains the code to train and evaluate RL agents with the CARLA leaderboard 2.0.

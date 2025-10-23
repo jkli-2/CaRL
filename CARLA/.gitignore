@@ -1,5 +1,6 @@
 results/logs
 inference_save/
+inference_save_parallel/
 
 # macOS files
 *.DS_store
