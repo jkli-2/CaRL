@@ -22,8 +22,8 @@ export PYTHONPATH="${SCENARIO_RUNNER_ROOT}":"${LEADERBOARD_ROOT}":${PYTHONPATH}
 
 policy_model_name=CaRL_10M_01
 # policy_model_name=Roach_01
-inference_route=inference_route20
-repetition=1
+inference_route=longest6
+repetition=2
 
 export SAVE_PATH=${WORK_DIR}/inference_save
 export SAVE_PNG=1
