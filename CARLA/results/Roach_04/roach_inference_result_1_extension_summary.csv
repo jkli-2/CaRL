@@ -1,0 +1,8 @@
+route_id,scenario_type,status,score_composed,score_penalty,score_route,duration_game,duration_system,num_infractions
+RouteScenario_24240_rep0,Accident,Failed - Agent timed out,19.259996,0.200604,96.01,415.65,234.824,6
+RouteScenario_24367_rep0,ConstructionObstacle,Failed - Agent timed out,13.099033,0.135083,96.97,453.75,294.461,8
+RouteScenario_24785_rep0,ConstructionObstacle,Failed - Agent got blocked,13.377847,0.136858,97.75,460.65,328.152,8
+RouteScenario_24795_rep0,ConstructionObstacle,Failed - Agent timed out,13.447112,0.137384,97.88,466.35,196.39,8
+RouteScenario_24816_rep0,Accident,Failed - Agent timed out,22.765291,0.235179,96.8,415.45,242.082,6
+RouteScenario_25857_rep0,AccidentTwoWays,Failed - Agent got blocked,48.181467,0.497177,96.91,439.45,122.24,6
+RouteScenario_27494_rep0,BlockedIntersection,Failed - Agent got blocked,60.667809,0.636198,95.36,211.45,110.472,3
