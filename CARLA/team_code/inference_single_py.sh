@@ -21,7 +21,7 @@ export PYTHONPATH=$PYTHONPATH:${CARLA_ROOT}/PythonAPI/carla
 export PYTHONPATH="${SCENARIO_RUNNER_ROOT}":"${LEADERBOARD_ROOT}":${PYTHONPATH}
 
 # policy_model_name=CaRL_10M_01
-policy_model_name=Roach_04
+policy_model_name=CaRL_v1_1_PY_01
 inference_route=inference_route20
 repetition=1
 

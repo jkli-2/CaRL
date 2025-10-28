@@ -1,0 +1,344 @@
+{
+    "_checkpoint": {
+        "global_record": {
+            "index": -1,
+            "route_id": -1,
+            "status": "Completed",
+            "infractions": {
+                "collisions_layout": 0.0,
+                "collisions_pedestrian": 0.0,
+                "collisions_vehicle": 1.317,
+                "red_light": 0.0,
+                "stop_infraction": 0.0,
+                "outside_route_lanes": 0.004,
+                "min_speed_infractions": 21.066,
+                "yield_emergency_vehicle_infractions": 0.0,
+                "scenario_timeouts": 2.194,
+                "route_dev": 0.0,
+                "vehicle_blocked": 0.0,
+                "route_timeout": 0.0
+            },
+            "scores_mean": {
+                "score_composed": 69.424798,
+                "score_route": 100.0,
+                "score_penalty": 0.694248
+            },
+            "scores_std_dev": {
+                "score_composed": 22.005,
+                "score_route": 0.0,
+                "score_penalty": 0.22
+            },
+            "meta": {
+                "total_length": 2278.503,
+                "duration_game": 1872.9999999999998,
+                "duration_system": 1348.93,
+                "exceptions": []
+            }
+        },
+        "progress": [
+            20,
+            20
+        ],
+        "records": [
+            {
+                "index": 2,
+                "route_id": "RouteScenario_24240_rep0",
+                "status": "Completed",
+                "num_infractions": 3,
+                "infractions": {
+                    "collisions_layout": [],
+                    "collisions_pedestrian": [],
+                    "collisions_vehicle": [],
+                    "red_light": [],
+                    "stop_infraction": [],
+                    "outside_route_lanes": [],
+                    "min_speed_infractions": [
+                        "Average speed is 2.98% of the surrounding traffic's one",
+                        "Average speed is 8.09% of the surrounding traffic's one"
+                    ],
+                    "yield_emergency_vehicle_infractions": [],
+                    "scenario_timeouts": [
+                        "Agent timed out a scenario"
+                    ],
+                    "route_dev": [],
+                    "vehicle_blocked": [],
+                    "route_timeout": []
+                },
+                "scores": {
+                    "score_route": 100,
+                    "score_penalty": 0.359425,
+                    "score_composed": 35.942478
+                },
+                "meta": {
+                    "route_length": 100.3,
+                    "duration_game": 251.55,
+                    "duration_system": 190.092
+                },
+                "timestamp": "",
+                "scenario_type": "Accident"
+            },
+            {
+                "index": 5,
+                "route_id": "RouteScenario_24367_rep0",
+                "status": "Completed",
+                "num_infractions": 6,
+                "infractions": {
+                    "collisions_layout": [],
+                    "collisions_pedestrian": [],
+                    "collisions_vehicle": [],
+                    "red_light": [],
+                    "stop_infraction": [],
+                    "outside_route_lanes": [],
+                    "min_speed_infractions": [
+                        "Average speed is 68.99% of the surrounding traffic's one",
+                        "Average speed is 2.43% of the surrounding traffic's one",
+                        "Average speed is 86.92% of the surrounding traffic's one",
+                        "Average speed is 91.9% of the surrounding traffic's one",
+                        "Average speed is 91.9% of the surrounding traffic's one"
+                    ],
+                    "yield_emergency_vehicle_infractions": [],
+                    "scenario_timeouts": [
+                        "Agent timed out a scenario"
+                    ],
+                    "route_dev": [],
+                    "vehicle_blocked": [],
+                    "route_timeout": []
+                },
+                "scores": {
+                    "score_route": 100,
+                    "score_penalty": 0.410711,
+                    "score_composed": 41.071069
+                },
+                "meta": {
+                    "route_length": 132.062,
+                    "duration_game": 259.95,
+                    "duration_system": 214.217
+                },
+                "timestamp": "",
+                "scenario_type": "ConstructionObstacle"
+            },
+            {
+                "index": 8,
+                "route_id": "RouteScenario_24785_rep0",
+                "status": "Completed",
+                "num_infractions": 4,
+                "infractions": {
+                    "collisions_layout": [],
+                    "collisions_pedestrian": [],
+                    "collisions_vehicle": [],
+                    "red_light": [],
+                    "stop_infraction": [],
+                    "outside_route_lanes": [],
+                    "min_speed_infractions": [
+                        "Average speed is 83.91% of the surrounding traffic's one",
+                        "Average speed is 2.26% of the surrounding traffic's one",
+                        "Average speed is 94.9% of the surrounding traffic's one"
+                    ],
+                    "yield_emergency_vehicle_infractions": [],
+                    "scenario_timeouts": [
+                        "Agent timed out a scenario"
+                    ],
+                    "route_dev": [],
+                    "vehicle_blocked": [],
+                    "route_timeout": []
+                },
+                "scores": {
+                    "score_route": 100,
+                    "score_penalty": 0.46366,
+                    "score_composed": 46.366038
+                },
+                "meta": {
+                    "route_length": 144.762,
+                    "duration_game": 259.8,
+                    "duration_system": 225.729
+                },
+                "timestamp": "",
+                "scenario_type": "ConstructionObstacle"
+            },
+            {
+                "index": 9,
+                "route_id": "RouteScenario_24795_rep0",
+                "status": "Completed",
+                "num_infractions": 6,
+                "infractions": {
+                    "collisions_layout": [],
+                    "collisions_pedestrian": [],
+                    "collisions_vehicle": [],
+                    "red_light": [],
+                    "stop_infraction": [],
+                    "outside_route_lanes": [],
+                    "min_speed_infractions": [
+                        "Average speed is 81.34% of the surrounding traffic's one",
+                        "Average speed is 2.28% of the surrounding traffic's one",
+                        "Average speed is 95.94% of the surrounding traffic's one",
+                        "Average speed is 98.2% of the surrounding traffic's one",
+                        "Average speed is 98.2% of the surrounding traffic's one"
+                    ],
+                    "yield_emergency_vehicle_infractions": [],
+                    "scenario_timeouts": [
+                        "Agent timed out a scenario"
+                    ],
+                    "route_dev": [],
+                    "vehicle_blocked": [],
+                    "route_timeout": []
+                },
+                "scores": {
+                    "score_route": 100,
+                    "score_penalty": 0.456431,
+                    "score_composed": 45.643094
+                },
+                "meta": {
+                    "route_length": 141.573,
+                    "duration_game": 259.8,
+                    "duration_system": 169.267
+                },
+                "timestamp": "",
+                "scenario_type": "ConstructionObstacle"
+            },
+            {
+                "index": 10,
+                "route_id": "RouteScenario_24816_rep0",
+                "status": "Completed",
+                "num_infractions": 3,
+                "infractions": {
+                    "collisions_layout": [],
+                    "collisions_pedestrian": [],
+                    "collisions_vehicle": [
+                        "Agent collided against object with type=vehicle.dodge.charger_police_2020 and id=2631 at (x=91.041, y=193.874, z=1.099)"
+                    ],
+                    "red_light": [],
+                    "stop_infraction": [],
+                    "outside_route_lanes": [],
+                    "min_speed_infractions": [
+                        "Average speed is 95.33% of the surrounding traffic's one",
+                        "Average speed is 4.78% of the surrounding traffic's one"
+                    ],
+                    "yield_emergency_vehicle_infractions": [],
+                    "scenario_timeouts": [],
+                    "route_dev": [],
+                    "vehicle_blocked": [],
+                    "route_timeout": []
+                },
+                "scores": {
+                    "score_route": 100,
+                    "score_penalty": 0.422599,
+                    "score_composed": 42.259926
+                },
+                "meta": {
+                    "route_length": 125.152,
+                    "duration_game": 138.8,
+                    "duration_system": 105.698
+                },
+                "timestamp": "",
+                "scenario_type": "Accident"
+            },
+            {
+                "index": 12,
+                "route_id": "RouteScenario_25857_rep0",
+                "status": "Completed",
+                "num_infractions": 2,
+                "infractions": {
+                    "collisions_layout": [],
+                    "collisions_pedestrian": [],
+                    "collisions_vehicle": [],
+                    "red_light": [],
+                    "stop_infraction": [],
+                    "outside_route_lanes": [],
+                    "min_speed_infractions": [
+                        "Average speed is 53.63% of the surrounding traffic's one"
+                    ],
+                    "yield_emergency_vehicle_infractions": [],
+                    "scenario_timeouts": [
+                        "Agent timed out a scenario"
+                    ],
+                    "route_dev": [],
+                    "vehicle_blocked": [],
+                    "route_timeout": []
+                },
+                "scores": {
+                    "score_route": 100,
+                    "score_penalty": 0.602623,
+                    "score_composed": 60.2623
+                },
+                "meta": {
+                    "route_length": 129.43,
+                    "duration_game": 256.05,
+                    "duration_system": 138.195
+                },
+                "timestamp": "",
+                "scenario_type": "AccidentTwoWays"
+            },
+            {
+                "index": 19,
+                "route_id": "RouteScenario_27494_rep0",
+                "status": "Completed",
+                "num_infractions": 1,
+                "infractions": {
+                    "collisions_layout": [],
+                    "collisions_pedestrian": [],
+                    "collisions_vehicle": [],
+                    "red_light": [],
+                    "stop_infraction": [],
+                    "outside_route_lanes": [],
+                    "min_speed_infractions": [
+                        "Average speed is 90.74% of the surrounding traffic's one"
+                    ],
+                    "yield_emergency_vehicle_infractions": [],
+                    "scenario_timeouts": [],
+                    "route_dev": [],
+                    "vehicle_blocked": [],
+                    "route_timeout": []
+                },
+                "scores": {
+                    "score_route": 100,
+                    "score_penalty": 0.97222,
+                    "score_composed": 97.222
+                },
+                "meta": {
+                    "route_length": 86.177,
+                    "duration_game": 28.35,
+                    "duration_system": 22.138
+                },
+                "timestamp": "",
+                "scenario_type": "BlockedIntersection"
+            }
+        ]
+    },
+    "entry_status": "Invalid",
+    "eligible": false,
+    "sensors": [],
+    "values": [
+        "69.424798",
+        "100.0",
+        "0.694248",
+        "0.0",
+        "1.317",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.004",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.0",
+        "2.194",
+        "21.066"
+    ],
+    "labels": [
+        "Avg. driving score",
+        "Avg. route completion",
+        "Avg. infraction penalty",
+        "Collisions with pedestrians",
+        "Collisions with vehicles",
+        "Collisions with layout",
+        "Red lights infractions",
+        "Stop sign infractions",
+        "Off-road infractions",
+        "Route deviations",
+        "Route timeouts",
+        "Agent blocked",
+        "Yield emergency vehicles infractions",
+        "Scenario timeouts",
+        "Min speed infractions"
+    ]
+}

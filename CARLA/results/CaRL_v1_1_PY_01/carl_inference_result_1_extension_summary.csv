@@ -1,0 +1,8 @@
+route_id,scenario_type,status,score_composed,score_penalty,score_route,duration_game,duration_system,num_infractions
+RouteScenario_24240_rep0,Accident,Completed,35.942478,0.359425,100,251.55,190.092,3
+RouteScenario_24367_rep0,ConstructionObstacle,Completed,41.071069,0.410711,100,259.95,214.217,6
+RouteScenario_24785_rep0,ConstructionObstacle,Completed,46.366038,0.46366,100,259.8,225.729,4
+RouteScenario_24795_rep0,ConstructionObstacle,Completed,45.643094,0.456431,100,259.8,169.267,6
+RouteScenario_24816_rep0,Accident,Completed,42.259926,0.422599,100,138.8,105.698,3
+RouteScenario_25857_rep0,AccidentTwoWays,Completed,60.2623,0.602623,100,256.05,138.195,2
+RouteScenario_27494_rep0,BlockedIntersection,Completed,97.222,0.97222,100,28.35,22.138,1

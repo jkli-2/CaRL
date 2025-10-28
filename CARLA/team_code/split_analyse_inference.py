@@ -9,12 +9,19 @@ import pandas as pd
 # summary_a_path = "/home/junkali/Data/CaRL/CARLA/results/CaRL_10M_01/carl_inference_result_1_baseline_summary.csv"
 # summary_b_path = "/home/junkali/Data/CaRL/CARLA/results/CaRL_10M_01/carl_inference_result_1_extension_summary.csv"
 
+# CaRL 300M
+json_path = "/home/junkali/Data/CaRL/CARLA/results/CaRL_v1_1_PY_01/carl_inference_result_1.json"
+split_json_a_path = "/home/junkali/Data/CaRL/CARLA/results/CaRL_v1_1_PY_01/carl_inference_result_1_baseline.json"
+split_json_b_path = "/home/junkali/Data/CaRL/CARLA/results/CaRL_v1_1_PY_01/carl_inference_result_1_extension.json"
+summary_a_path = "/home/junkali/Data/CaRL/CARLA/results/CaRL_v1_1_PY_01/carl_inference_result_1_baseline_summary.csv"
+summary_b_path = "/home/junkali/Data/CaRL/CARLA/results/CaRL_v1_1_PY_01/carl_inference_result_1_extension_summary.csv"
+
 # Roach
-json_path = "/home/junkali/Data/CaRL/CARLA/results/Roach_04/roach_inference_result_1.json"
-split_json_a_path = "/home/junkali/Data/CaRL/CARLA/results/Roach_04/roach_inference_result_1_baseline.json"
-split_json_b_path = "/home/junkali/Data/CaRL/CARLA/results/Roach_04/roach_inference_result_1_extension.json"
-summary_a_path = "/home/junkali/Data/CaRL/CARLA/results/Roach_04/roach_inference_result_1_baseline_summary.csv"
-summary_b_path = "/home/junkali/Data/CaRL/CARLA/results/Roach_04/roach_inference_result_1_extension_summary.csv"
+# json_path = "/home/junkali/Data/CaRL/CARLA/results/Roach_04/roach_inference_result_1.json"
+# split_json_a_path = "/home/junkali/Data/CaRL/CARLA/results/Roach_04/roach_inference_result_1_baseline.json"
+# split_json_b_path = "/home/junkali/Data/CaRL/CARLA/results/Roach_04/roach_inference_result_1_extension.json"
+# summary_a_path = "/home/junkali/Data/CaRL/CARLA/results/Roach_04/roach_inference_result_1_baseline_summary.csv"
+# summary_b_path = "/home/junkali/Data/CaRL/CARLA/results/Roach_04/roach_inference_result_1_extension_summary.csv"
 
 xml_path = "/home/junkali/Data/CaRL/CARLA/custom_leaderboard/leaderboard/data/inference_route20.xml"
 

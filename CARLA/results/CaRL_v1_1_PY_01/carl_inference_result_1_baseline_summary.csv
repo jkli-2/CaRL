@@ -1,0 +1,14 @@
+route_id,scenario_type,status,score_composed,score_penalty,score_route,duration_game,duration_system,num_infractions
+RouteScenario_24211_rep0,DynamicObjectCrossing,Completed,96.373489,0.963735,100,21.05,12.028,2
+RouteScenario_24224_rep0,DynamicObjectCrossing,Completed,99.643,0.99643,100,14.05,8.009,1
+RouteScenario_24330_rep0,HardBreakRoute,Completed,82.849232,0.828492,100,26.5,22.167,3
+RouteScenario_24340_rep0,ControlLoss,Completed,95.558273,0.955583,100,15.8,10.011,4
+RouteScenario_24781_rep0,HardBreakRoute,Completed,54.637045,0.54637,100,53.9,39.495,3
+RouteScenario_24784_rep0,ControlLoss,Completed,71.776478,0.717765,100,25.5,20.127,2
+RouteScenario_24841_rep0,ControlLoss,Completed,89.653708,0.896537,100,23.05,13.021,5
+RouteScenario_26406_rep0,HardBreakRoute,Completed,82.762124,0.827621,100,32.4,20.028,2
+RouteScenario_26456_rep0,HardBreakRoute,Completed,71.913297,0.719133,100,78.6,40.083,3
+RouteScenario_26944_rep0,OppositeVehicleRunningRedLight,Completed,58.368072,0.583681,100,64.85,49.263,2
+RouteScenario_26950_rep0,OppositeVehicleRunningRedLight,Completed,99.335109,0.993351,100,14.55,13.182,2
+RouteScenario_26956_rep0,SignalizedJunctionRightTurn,Completed,56.859221,0.568592,100,22.45,14.02,2
+RouteScenario_26966_rep0,SignalizedJunctionRightTurn,Completed,60.0,0.6,100,26.0,22.16,1
